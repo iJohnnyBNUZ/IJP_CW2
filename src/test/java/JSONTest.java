@@ -3,8 +3,7 @@ import Model.Item;
 import Model.NextLocation;
 import com.google.gson.Gson;
 import org.junit.Test;
-import org.junit.Before;
-import org.junit.After;
+import Utils.ReadJSON;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,5 +42,11 @@ public class JSONTest {
         Gson gson = new Gson();
         System.out.println(gson.toJson(currentLocation));
 
+    }
+
+    @Test
+    public void testReadJSON(){
+        CurrentLocation c = ReadJSON.readCurLocationJSON(getClass().getResource("config/JSONExample.json").getFile());
+        System.out.println();
     }
 }
