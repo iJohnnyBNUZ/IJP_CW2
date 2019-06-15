@@ -1,0 +1,23 @@
+{
+  "locationName": "reception",
+  "itemList": [
+    {
+      "itemName": "apple",
+      "itemPath": "/item/blaaaa"
+    },
+    {
+      "itemName": "beef",
+      "itemPath": "/item/bla"
+    }
+  ],
+  "nextLocations": [
+    {
+      "angle": 20,
+      "imgPath": "/bla/bla"
+    },
+    {
+      "angle": 45,
+      "imgPath": "/bla/bla/bla"
+    }
+  ]
+}

@@ -1,9 +1,10 @@
 package Model;
 
+import java.util.List;
+
 public class Item {
     private String itemName;
     private String itemPath;
-
     public String getItemName() {
         return itemName;
     }
@@ -19,4 +20,5 @@ public class Item {
     public void setItemPath(String itemPath) {
         this.itemPath = itemPath;
     }
+
 }

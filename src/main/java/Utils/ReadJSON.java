@@ -1,13 +1,13 @@
 package Utils;
 
-import Model.CurrentLocation;
+import Model.Location;
 import com.google.gson.Gson;
 
 public class ReadJSON {
 
-    public static CurrentLocation readCurLocationJSON(String path){
+    public static Location readCurLocationJSON(String path){
         Gson gson = new Gson();
-        CurrentLocation currentLocation = new CurrentLocation();
+        Location location = new Location();
         String json = "";
 
         try {
@@ -16,8 +16,8 @@ public class ReadJSON {
             e.printStackTrace();
         }
 
-        currentLocation = gson.fromJson(json, CurrentLocation.class);
+        location = gson.fromJson(json, Location.class);
 
-        return  currentLocation;
+        return location;
     }
 }
