@@ -1,24 +1,20 @@
 package Model;
 
-import java.util.List;
-
 public class Item {
     private String itemName;
-    private String itemPath;
-    public String getItemName() {
-        return itemName;
+    private int ItemPositionX;
+    private int ItemPositionY;
+
+    public void setPosition(int x, int y){
+        this.ItemPositionX = x;
+        this.ItemPositionY = y;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public int getItemPositionX() {
+        return ItemPositionX;
     }
 
-    public String getItemPath() {
-        return itemPath;
+    public int getItemPositionY() {
+        return ItemPositionY;
     }
-
-    public void setItemPath(String itemPath) {
-        this.itemPath = itemPath;
-    }
-
 }
