@@ -1,7 +1,10 @@
 package Model;
 
-import java.util.ArrayList;
-import java.util.List;
+import View.BagView;
+import View.ItemView;
+import View.LocationView;
+
+import java.util.*;
 
 public class User {
     private List<Item> bag;
@@ -32,18 +35,35 @@ public class User {
     }
 
     public void addItem(Item item){
-
+        currentLocation.addItem(item);
     }
 
     public void removeItem(Item item){
-
+        currentLocation.removeItem(item);
     }
 
     public void moveInDirection(int angle){
-
+        currentLocation = currentLocation.getLocationAtAngle(angle);
     }
 
     public void updateView(){
 
+//        get all keys from hashMap
+        List<Integer> arrowAngles = new LinkedList<>();
+        Set<Map.Entry<Integer, Location>> eSet = currentLocation.getNeighbors().entrySet();
+        Iterator<Map.Entry<Integer, Location>> it = eSet.iterator();
+        while (it.hasNext()){
+            arrowAngles.add(it.next().getKey());
+        }
+//        Update location view
+        LocationView.getLocationView().updateLocation(currentLocation.getLocationName(), arrowAngles);
+//        Update item view
+        ItemView.getItemView().updateItems(currentLocation.getItems());
+//        Update bag view
+        List<String> bagItems = new LinkedList<>();
+        for (Item item: bag){
+            bagItems.add(item.getItemName());
+        }
+        BagView.getBagView().updateBag(bagItems);
     }
 }
