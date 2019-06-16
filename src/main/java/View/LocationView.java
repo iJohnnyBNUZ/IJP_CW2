@@ -25,7 +25,7 @@ public class LocationView {
 
     }
 
-    public void addArrows(List<Integer> arrowAngles){
+    public void addArrows(Integer arrowAngle){
 
     }
 }
