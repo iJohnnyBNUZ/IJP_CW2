@@ -7,6 +7,10 @@ public class LocationView {
 
     private LocationView(){}
 
+    public LocationView(String initialLocationName, List<Integer> arrowAngles){
+
+    }
+
     public static LocationView getLocationView(){
         synchronized (LocationView.class){
             if(locationView == null){
@@ -18,6 +22,10 @@ public class LocationView {
     }
 
     public void updateLocation(String locationName, List<Integer> arrowAngles) {
+
+    }
+
+    public void addArrows(List<Integer> arrowAngles){
 
     }
 }
