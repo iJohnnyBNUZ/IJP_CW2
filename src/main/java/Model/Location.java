@@ -1,6 +1,6 @@
 package Model;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,21 +29,33 @@ public class Location {
         this.items = items;
     }
 
-    public List<String> getItems(){
+    public List<String> getIemsName(){
+        List<String> itemnames = new ArrayList<>();
 
-        List<String> itemnames = Arrays. asList("one", "two", "three");
+        for(int i = 0; i < items.size();i++){
+            itemnames.add(items.get(i).getItemName());
+        }
         return itemnames;
     }
 
-    public void addItem(Item item){
+    public List<Item> getItems(){
+        return items;
+    }
 
+    public void addItem(Item item){
+        this.items.add(item);
     }
 
     public void removeItem(Item item){
-
+        this.items.remove(item);
     }
 
     public Location getLocationAtAngle(int angle){
-        return this;
+        int i = angle/180;
+        if(neighbors.containsKey(i)){
+            return neighbors.get(i);
+        }else{
+            return null;
+        }
     }
 }
