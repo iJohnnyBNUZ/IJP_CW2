@@ -55,7 +55,6 @@ public class LocationView {
     public void addArrows(Integer arrowAngle){
         Button button = new Button("↑");
         button.setPrefWidth(60);
-        buttonBox.setMargin(button,new Insets(10.0,0.0,10.0,5.0));
         button.setRotate(arrowAngle);
         buttonBox.getChildren().add(button);
         button.setOnAction(new EventHandler<ActionEvent>() {
