@@ -3,6 +3,23 @@ package Model;
 import java.util.List;
 
 public class World {
+
+    private static volatile World world = null;
+
+    private World(){}
+
+    public static World getWorld(){
+        if (world == null){
+            synchronized (World.class){
+                if (world == null){
+                    world = new World();
+                }
+            }
+        }
+        
+        return world;
+    }
+
     private List<Location> allLocations;
     private List<User> allUsers;
 
