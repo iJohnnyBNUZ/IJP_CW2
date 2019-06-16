@@ -58,7 +58,7 @@ public class User {
 //        Update location view
         LocationView.getLocationView().updateLocation(currentLocation.getLocationName(), arrowAngles);
 //        Update item view
-        ItemView.getItemView().updateItems(currentLocation.getItems());
+        ItemView.getItemView().updateItems(currentLocation.getIemsName());
 //        Update bag view
         List<String> bagItems = new LinkedList<>();
         for (Item item: bag){
