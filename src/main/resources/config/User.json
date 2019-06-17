@@ -1,23 +1,18 @@
 {
-  "locationName": "reception",
-  "itemList": [
+  "Users": [
     {
-      "itemName": "apple",
-      "itemPath": "/item/blaaaa"
-    },
-    {
-      "itemName": "beef",
-      "itemPath": "/item/bla"
-    }
-  ],
-  "nextLocations": [
-    {
-      "angle": 20,
-      "imgPath": "/bla/bla"
-    },
-    {
-      "angle": 45,
-      "imgPath": "/bla/bla/bla"
+      "player_0": {
+        "id": "play0",
+        "name": "Paul",
+        "currentLocation": "reception_0",
+        "items": [
+          {
+            "id": "lemon0",
+            "name": "Lemon",
+            "filePath": "/resources/images/lemon.png"
+          }
+        ]
+      }
     }
   ]
 }
