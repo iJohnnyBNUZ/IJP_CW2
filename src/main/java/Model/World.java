@@ -38,4 +38,8 @@ public class World {
     public void setAllUsers(List<User> allUsers) {
         this.allUsers = allUsers;
     }
+
+    public void addUser(User newUser) {allUsers.add(newUser);}
+
+    public void addLocation(Location newLocation) {allLocations.add(newLocation);}
 }

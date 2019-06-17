@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import Controller.LoadGame;
 
 public class Main extends Application {
 
@@ -17,5 +18,8 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        LoadGame lg = new LoadGame("config/Location.json", "config/Location.json");
+        lg.loadWorld();
+        lg.loadUser();
     }
 }
