@@ -6,24 +6,43 @@ import java.util.List;
 import java.util.Set;
 
 import Controller.BagController;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import java.util.Collections;
 
+/**
+ * An view for the virtual world application which uses JavaFx
+ * and allows the users to look up items in their bag. 
+ * Users also can bring out the item by clicking the item and confirm the action.
+ * 
+ * @author  Danyang Yu;
+ * @version 1.0;
+ */
 public class BagView {
+	@FXML
+	private MenuItem menu_bag;
+	
 	@FXML
 	private GridPane InBag; 
 	
 	@FXML
 	private TitledPane bag; 
+	
+	@FXML 
+	private Button confirm;
+	
+	@FXML
+	private Button close;
 	
     private static volatile BagView bagView = null;
     private BagController controller = null;
@@ -32,9 +51,40 @@ public class BagView {
     private int row=3;
     private int column=3;
 
-    private BagView(BagController controller){
+    public BagView(BagController controller){
     	this.controller = controller;
+    	initialise();
     }
+    
+    public void initialise() {
+    	menu_bag.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				bag.setVisible(true);
+			}
+    		
+    	});
+    	
+    	confirm.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				controller.removeFromBag();
+				bag.setVisible(false);
+			}
+    		
+    	});
+    	
+    	close.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				bag.setVisible(false);
+			}
+    		
+    	});
+    }
+    
 
     public static BagView getBagView(){
         synchronized (BagView.class){
@@ -113,4 +163,7 @@ public class BagView {
    	 }
 		
     }
+	public void disappear() {
+		bag.setVisible(false);
+	}
 }

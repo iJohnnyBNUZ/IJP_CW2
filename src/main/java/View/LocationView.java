@@ -6,8 +6,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
@@ -21,9 +24,26 @@ public class LocationView {
     @FXML
     private ImageView imageView;
     private HBox buttonBox;
+    
+    @FXML
+	private MenuItem menu_bag;
+	
+	@FXML
+	private GridPane InBag; 
+	
+	@FXML
+	private TitledPane bag; 
 
-    private LocationView(LocationController locationcontroller){
-        this.locationcontroller = locationcontroller;
+    @FXML
+    private void initialize() {
+    	System.out.println("init");
+    	menu_bag.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				bag.setVisible(true);
+			}
+    		
+    	});
     }
 
     public void setLocationController(LocationController controller){this.locationcontroller = controller;}
@@ -32,7 +52,7 @@ public class LocationView {
     public static LocationView getLocationView(){
         synchronized (LocationView.class){
             if(locationView == null){
-                locationView = new LocationView(new LocationController());
+                locationView = new LocationView();
             }
         }
 
@@ -58,8 +78,9 @@ public class LocationView {
         button.setRotate(arrowAngle);
         buttonBox.getChildren().add(button);
         button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
+             
             public void handle(ActionEvent event) {
+            	// TODO Auto-generated method stub
                 if(locationcontroller != null){
                     locationcontroller.moveToDirection(arrowAngle);
                 }
