@@ -44,9 +44,6 @@ public class LocationView {
     	itemViewController = new ItemView(this);
     }
     
-    public void say() {
-    	System.out.println("out");
-    }
 
     public void setLocationController(LocationController controller){this.locationcontroller = controller;}
     public LocationController getLocationController(){return locationcontroller;}

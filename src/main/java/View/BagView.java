@@ -123,8 +123,6 @@ public class BagView {
 
 					public void handle(MouseEvent arg0) {
 						// TODO Auto-generated method stub
-						System.out.println(item.getStyle());
-						System.out.println(item.getStyle().equals(style));
 						if(item.getStyle()==style) {
 							item.setStyle("");
 							controller.unselect(tmp_name);
