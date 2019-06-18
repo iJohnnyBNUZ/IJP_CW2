@@ -35,16 +35,40 @@ public class LocationView {
     @FXML
     private BagView bagViewController;
     
+    
+    private ItemView itemViewController;
+    
     @FXML
     private void initialize() {
     	bagViewController.injectMainController(this);
-    	
+    	itemViewController = new ItemView(this);
+    }
+    
+    public void say() {
+    	System.out.println("out");
     }
 
     public void setLocationController(LocationController controller){this.locationcontroller = controller;}
     public LocationController getLocationController(){return locationcontroller;}
 
-    public static LocationView getLocationView(){
+
+	public BagView getBagViewController() {
+		return bagViewController;
+	}
+
+	public void setBagViewController(BagView bagViewController) {
+		this.bagViewController = bagViewController;
+	}
+
+	public ItemView getItemViewController() {
+		return itemViewController;
+	}
+
+	public void setItemViewController(ItemView itemViewController) {
+		this.itemViewController = itemViewController;
+	}
+
+	public static LocationView getLocationView(){
         synchronized (LocationView.class){
             if(locationView == null){
                 locationView = new LocationView();

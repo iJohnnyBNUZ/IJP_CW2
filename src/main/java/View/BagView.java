@@ -126,7 +126,6 @@ public class BagView {
 						System.out.println(item.getStyle());
 						System.out.println(item.getStyle().equals(style));
 						if(item.getStyle()==style) {
-							System.out.println("in");
 							item.setStyle("");
 							controller.unselect(tmp_name);
 						}else {
