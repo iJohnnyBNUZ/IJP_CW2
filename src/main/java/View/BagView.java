@@ -17,6 +17,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+
+import java.util.ArrayList;
 import java.util.Collections;
 
 /**
@@ -45,10 +47,11 @@ public class BagView {
 	
     private static volatile BagView bagView_instance = null;
     private BagController controller = null;
-    private double image_h = 65.0;
-    private double image_w =65.0;
+    private double image_h = 50.0;
+    private double image_w =50.0;
     private int row=3;
     private int column=3;
+    
 
     
     public void injectMainController(LocationView locationView) {
@@ -56,6 +59,20 @@ public class BagView {
     	this.locationView = locationView;
 		
 	}
+    
+    /**for test the update bag method
+     * after the controller is finished, this method can be removed
+     * */
+    public void initialize() {
+    	
+    	List<String> tmp = new ArrayList<String>();
+    	tmp.add("apple");
+    	tmp.add("apple");
+    	tmp.add("lemon");
+    	tmp.add("orange");
+    	updateBag(tmp);
+    	bagView.setVisible(false);
+    }
 
     public static BagView getBagView(){
         synchronized (BagView.class){
@@ -92,7 +109,7 @@ public class BagView {
 				
 				
 				//create border pane for each item
-				BorderPane item = new BorderPane();
+				final BorderPane item = new BorderPane();
 				
 				//create label to show the number of item
 				Label item_num = new Label(""+Collections.frequency(bagItems, tmp_name));
@@ -101,10 +118,22 @@ public class BagView {
 				
 				//create ImageView to each of the items
 	       		ImageView item_img = new ImageView();
+	       		final String style = "-fx-background-color:  #ffffff";
 	       		item_img.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
 					public void handle(MouseEvent arg0) {
 						// TODO Auto-generated method stub
+						System.out.println(item.getStyle());
+						System.out.println(item.getStyle().equals(style));
+						if(item.getStyle()==style) {
+							System.out.println("in");
+							item.setStyle("");
+							controller.unselect(tmp_name);
+						}else {
+							item.setStyle(style);
+						}
+							
+						
 						controller.select(tmp_name);
 					}
 					
@@ -117,8 +146,7 @@ public class BagView {
 	       	     
 	       	     item.setCenter(item_img);
 	       	     //set the item's position.
-	       	     InBag.add(item, r, c);
-	       	     
+	       	     InBag.add(item, c, r);
 	       	     if(c<column-1) {
 	       	    	 c++;
 	       	     }else {
@@ -142,11 +170,14 @@ public class BagView {
     
 	public void disappear(ActionEvent event) {
 		bagView.setVisible(false);
+		
 	}
 
 	public void showBag() {
 		// TODO Auto-generated method stub
 		bagView.setVisible(true);
+		
+		
 	}
 
 	

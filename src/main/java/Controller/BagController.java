@@ -9,4 +9,9 @@ public class BagController {
 		
 	}
 
+	public void unselect(String tmp_name) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
