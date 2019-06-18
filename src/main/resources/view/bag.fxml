@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TitledPane fx:id="bag" collapsible="false" prefHeight="272.0" prefWidth="258.0" text="Bag" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.BagView">
+<TitledPane fx:id="bagView" collapsible="false" prefHeight="272.0" prefWidth="258.0" text="Bag" visible="false" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.BagView">
    <content>
       <SplitPane dividerPositions="0.8018092105263158" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
          <items>
@@ -34,8 +34,8 @@
                <children>
                   <ButtonBar prefHeight="44.8" prefWidth="256.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <buttons>
-                        <Button fx:id="Confirm" mnemonicParsing="false" text="Put down" />
-                        <Button mnemonicParsing="false" text="Close" />
+                        <Button fx:id="confirm" mnemonicParsing="false" onAction="#putDown" text="Put down" />
+                        <Button fx:id="close" mnemonicParsing="false" onAction="#disappear" text="Close" />
                      </buttons>
                      <padding>
                         <Insets right="10.0" />

@@ -11,7 +11,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,14 +28,14 @@ import java.util.Collections;
  * @version 1.0;
  */
 public class BagView {
-	@FXML
-	private MenuItem menu_bag;
+	
+	private LocationView locationView;
 	
 	@FXML
 	private GridPane InBag; 
 	
 	@FXML
-	private TitledPane bag; 
+	private TitledPane bagView; 
 	
 	@FXML 
 	private Button confirm;
@@ -44,56 +43,28 @@ public class BagView {
 	@FXML
 	private Button close;
 	
-    private static volatile BagView bagView = null;
+    private static volatile BagView bagView_instance = null;
     private BagController controller = null;
     private double image_h = 65.0;
     private double image_w =65.0;
     private int row=3;
     private int column=3;
 
-    public BagView(BagController controller){
-    	this.controller = controller;
-    	initialise();
-    }
     
-    public void initialise() {
-    	menu_bag.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				bag.setVisible(true);
-			}
-    		
-    	});
-    	
-    	confirm.setOnAction(new EventHandler<ActionEvent>() {
-
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				controller.removeFromBag();
-				bag.setVisible(false);
-			}
-    		
-    	});
-    	
-    	close.setOnAction(new EventHandler<ActionEvent>() {
-
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				bag.setVisible(false);
-			}
-    		
-    	});
-    }
-    
+    public void injectMainController(LocationView locationView) {
+		// TODO Auto-generated method stub
+    	this.locationView = locationView;
+		
+	}
 
     public static BagView getBagView(){
         synchronized (BagView.class){
-            if(bagView == null){
-                bagView = new BagView(new BagController());
+            if(bagView_instance == null){
+            	bagView_instance = new BagView();
             }
         }
 
-        return bagView;
+        return bagView_instance;
     }
 
     public BagController getController() {
@@ -158,12 +129,25 @@ public class BagView {
 			}
 			
    		 //show the bag on the interface
-   	     bag.setVisible(true);
+   	     bagView.setVisible(true);
    	     
    	 }
 		
     }
-	public void disappear() {
-		bag.setVisible(false);
+    
+    public void putDown(ActionEvent event) {
+    	controller.removeFromBag();
+		bagView.setVisible(false);
 	}
+    
+	public void disappear(ActionEvent event) {
+		bagView.setVisible(false);
+	}
+
+	public void showBag() {
+		// TODO Auto-generated method stub
+		bagView.setVisible(true);
+	}
+
+	
 }

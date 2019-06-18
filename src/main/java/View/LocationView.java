@@ -10,6 +10,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
@@ -20,6 +21,9 @@ public class LocationView {
     private static volatile LocationView locationView = null;
 
     private LocationController locationcontroller = null;
+    
+    @FXML
+    private AnchorPane page; 
 
     @FXML
     private ImageView imageView;
@@ -28,22 +32,13 @@ public class LocationView {
     @FXML
 	private MenuItem menu_bag;
 	
-	@FXML
-	private GridPane InBag; 
-	
-	@FXML
-	private TitledPane bag; 
-
+    @FXML
+    private BagView bagViewController;
+    
     @FXML
     private void initialize() {
-    	System.out.println("init");
-    	menu_bag.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				bag.setVisible(true);
-			}
-    		
-    	});
+    	bagViewController.injectMainController(this);
+    	
     }
 
     public void setLocationController(LocationController controller){this.locationcontroller = controller;}
@@ -89,4 +84,14 @@ public class LocationView {
 
 
     }
+    
+    public void openBag(ActionEvent event) {
+		// TODO Auto-generated method stub
+    	bagViewController.showBag();
+	}
+    
+    public AnchorPane getPage() {
+		// TODO Auto-generated method stub
+    	return page;
+	}
 }

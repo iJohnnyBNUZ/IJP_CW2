@@ -20,17 +20,19 @@ import javafx.scene.layout.AnchorPane;
  * @version 1.0;
  */
 public class ItemView {
-	@FXML
 	private AnchorPane page; 
 	
     private static volatile ItemView itemView = null;
     private ItemsController controller =null;
+    
+    private LocationView locationView;
 
 
 
 	//band ItemsController with ItemView.
     private ItemView(ItemsController controller){
     	this.controller=controller;
+    	this.page = locationView.getPage();
     }
 
     public ItemsController getController() {
