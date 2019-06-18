@@ -1,5 +1,7 @@
 package Model;
 
+import View.ItemView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,10 +46,12 @@ public class Location {
 
     public void addItem(Item item){
         this.items.add(item);
+        ItemView.getItemView().updateItems(getItems());
     }
 
     public void removeItem(Item item){
         this.items.remove(item);
+        ItemView.getItemView().updateItems(getItems());
     }
 
     public Location getLocationAtAngle(int angle){
