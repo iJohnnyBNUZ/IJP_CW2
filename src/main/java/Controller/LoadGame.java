@@ -28,7 +28,7 @@ public class LoadGame {
 
             if(World.getWorld().getLocationByID(locationID) == null) {
                 Location location = new Location();
-                location = this.buildLocation(location, locationArray.get(i).getAsJsonObject());
+                this.buildLocation(location, locationArray.get(i).getAsJsonObject());
                 World.getWorld().addLocation(location);
             }
             else {
@@ -37,16 +37,29 @@ public class LoadGame {
         }
     }
 
-    private Location  buildLocation(Location location, JsonObject locData) {
+    public void loadUser() {
+        String userSaveString = ReadJSON.getJSON(getClass().getResource("/" + userSave).getFile());
+        JsonArray userArray = new JsonParser().parse(userSaveString).getAsJsonArray();
+        for(int i = 0; i < userArray.size(); i++) {
+            User user = new User();
+            JsonObject userData = userArray.get(i).getAsJsonObject();
+            user.setUserID(String.valueOf(userData.get("id")));
+            user.setCurrentLocation(World.getWorld().getLocationByID(String.valueOf(userData.get("currentLocation"))));
+            for (int j = 0; j < userData.getAsJsonArray("items").size(); j++) {
+                Item item = new Item();
+                buildItem(item, userData.getAsJsonArray("items").get(j).getAsJsonObject());
+                user.addItem(item);
+            }
+            World.getWorld().addUser(user);
+        }
+    }
+
+    private void buildLocation(Location location, JsonObject locData) {
         location.setLocationID(String.valueOf(locData.get("id")));
         location.setLocationName(String.valueOf(locData.get("filePath")));
-        for (int j = 0; j < locData.getAsJsonArray("items").size(); j++) {
+        for (int i = 0; i < locData.getAsJsonArray("items").size(); i++) {
             Item item = new Item();
-            item.setItemID(String.valueOf(locData.getAsJsonArray("items").get(j).getAsJsonObject().get("id")));
-            item.setItemName(String.valueOf(locData.getAsJsonArray("items").get(j).getAsJsonObject().get("filePath")));
-            double x = Double.parseDouble(String.valueOf(locData.getAsJsonArray("items").get(j).getAsJsonObject().get("positionX")));
-            double y = Double.parseDouble(String.valueOf(locData.getAsJsonArray("items").get(j).getAsJsonObject().get("positionY")));
-            item.setPosition(x, y);
+            buildItem(item, locData.getAsJsonArray("items").get(i).getAsJsonObject());
             location.addItem(item);
         }
         JsonArray neighborArray = locData.getAsJsonArray("neighbors");
@@ -61,18 +74,13 @@ public class LoadGame {
                 location.addNeighbor(newNeighbor, Integer.parseInt(String.valueOf(neighborArray.get(i).getAsJsonObject().get("angle"))));
             }
         }
-        return location;
     }
 
-    public void loadUser() {
-        String userSaveString = ReadJSON.getJSON(getClass().getResource("/" + userSave).getFile());
-        JsonArray userArray = new JsonParser().parse(userSaveString).getAsJsonArray();
-        for(int i = 0; i < userArray.size(); i++) {
-            User user = new User();
-            JsonObject userData = userArray.get(i).getAsJsonObject();
-            user.setUserID(String.valueOf(userData.get("id")));
-            user.setCurrentLocation(World.getWorld().getLocationByID(String.valueOf(userData.get("currentLocation"))));
-            World.getWorld().addUser(user);
-        }
+    private void buildItem(Item item, JsonObject itemData) {
+        item.setItemID(String.valueOf(itemData.get("id")));
+        item.setItemName(String.valueOf(itemData.get("filePath")));
+        double x = Double.parseDouble(String.valueOf(itemData.get("positionX")));
+        double y = Double.parseDouble(String.valueOf(itemData.get("positionY")));
+        item.setPosition(x, y);
     }
 }
