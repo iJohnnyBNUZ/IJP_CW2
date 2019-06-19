@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class World {
@@ -20,26 +21,29 @@ public class World {
         return world;
     }
 
-    private List<Location> allLocations;
-    private List<User> allUsers;
+    private List<Location> allLocations = new ArrayList<>();
+    private List<User> allUsers = new ArrayList<>();
 
     public List<Location> getAllLocations() {
         return allLocations;
-    }
-
-    public void setAllLocations(List<Location> allLocations) {
-        this.allLocations = allLocations;
     }
 
     public List<User> getAllUsers() {
         return allUsers;
     }
 
-    public void setAllUsers(List<User> allUsers) {
-        this.allUsers = allUsers;
-    }
-
     public void addUser(User newUser) {allUsers.add(newUser);}
 
     public void addLocation(Location newLocation) {allLocations.add(newLocation);}
+
+    public Location getLocationByID(String id) throws NullPointerException {
+        if(allLocations.size() != 0) {
+            for (Location allLocation : allLocations) {
+                if (allLocation.getLocationID().equals(id)) {
+                    return allLocation;
+                }
+            }
+        }
+        return null;
+    }
 }

@@ -7,8 +7,17 @@ import View.LocationView;
 import java.util.*;
 
 public class User {
+    private String userID;
     private List<Item> bag;
     private Location currentLocation;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
     public List<Item> getBag() {
         return bag;

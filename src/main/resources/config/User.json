@@ -1,18 +1,16 @@
-{
-  "Users": [
-    {
-      "player_0": {
-        "id": "play0",
-        "name": "Paul",
-        "currentLocation": "reception_0",
-        "items": [
-          {
-            "id": "lemon0",
-            "name": "Lemon",
-            "filePath": "/resources/images/lemon.png"
-          }
-        ]
-      }
+[
+  {
+    "player_0": {
+      "id": "play0",
+      "name": "Paul",
+      "currentLocation": "rec0",
+      "items": [
+        {
+          "id": "lemon0",
+          "name": "Lemon",
+          "filePath": "/resources/images/lemon.png"
+        }
+      ]
     }
-  ]
-}
+  }
+]

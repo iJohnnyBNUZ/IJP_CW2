@@ -11,13 +11,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+
+import java.util.ArrayList;
 import java.util.Collections;
 
 /**
@@ -29,14 +30,14 @@ import java.util.Collections;
  * @version 1.0;
  */
 public class BagView {
-	@FXML
-	private MenuItem menu_bag;
+	
+	private LocationView locationView;
 	
 	@FXML
 	private GridPane InBag; 
 	
 	@FXML
-	private TitledPane bag; 
+	private TitledPane bagView; 
 	
 	@FXML 
 	private Button confirm;
@@ -44,56 +45,43 @@ public class BagView {
 	@FXML
 	private Button close;
 	
-    private static volatile BagView bagView = null;
+    private static volatile BagView bagView_instance = null;
     private BagController controller = null;
-    private double image_h = 65.0;
-    private double image_w =65.0;
+    private double image_h = 50.0;
+    private double image_w =50.0;
     private int row=3;
     private int column=3;
-
-    public BagView(BagController controller){
-    	this.controller = controller;
-    	initialise();
-    }
     
-    public void initialise() {
-    	menu_bag.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				bag.setVisible(true);
-			}
-    		
-    	});
-    	
-    	confirm.setOnAction(new EventHandler<ActionEvent>() {
 
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				controller.removeFromBag();
-				bag.setVisible(false);
-			}
-    		
-    	});
-    	
-    	close.setOnAction(new EventHandler<ActionEvent>() {
-
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				bag.setVisible(false);
-			}
-    		
-    	});
-    }
     
+    public void injectMainController(LocationView locationView) {
+		// TODO Auto-generated method stub
+    	this.locationView = locationView;
+		
+	}
+    
+    /**for test the update bag method
+     * after the controller is finished, this method can be removed
+     * */
+    public void initialize() {
+    	
+    	List<String> tmp = new ArrayList<String>();
+    	tmp.add("apple");
+    	tmp.add("apple");
+    	tmp.add("lemon");
+    	tmp.add("orange");
+    	updateBag(tmp);
+    	bagView.setVisible(false);
+    }
 
     public static BagView getBagView(){
         synchronized (BagView.class){
-            if(bagView == null){
-                bagView = new BagView(new BagController());
+            if(bagView_instance == null){
+            	bagView_instance = new BagView();
             }
         }
 
-        return bagView;
+        return bagView_instance;
     }
 
     public BagController getController() {
@@ -121,7 +109,7 @@ public class BagView {
 				
 				
 				//create border pane for each item
-				BorderPane item = new BorderPane();
+				final BorderPane item = new BorderPane();
 				
 				//create label to show the number of item
 				Label item_num = new Label(""+Collections.frequency(bagItems, tmp_name));
@@ -130,10 +118,19 @@ public class BagView {
 				
 				//create ImageView to each of the items
 	       		ImageView item_img = new ImageView();
+	       		final String style = "-fx-background-color:  #ffffff";
 	       		item_img.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
 					public void handle(MouseEvent arg0) {
 						// TODO Auto-generated method stub
+						if(item.getStyle()==style) {
+							item.setStyle("");
+							controller.unselect(tmp_name);
+						}else {
+							item.setStyle(style);
+						}
+							
+						
 						controller.select(tmp_name);
 					}
 					
@@ -146,8 +143,7 @@ public class BagView {
 	       	     
 	       	     item.setCenter(item_img);
 	       	     //set the item's position.
-	       	     InBag.add(item, r, c);
-	       	     
+	       	     InBag.add(item, c, r);
 	       	     if(c<column-1) {
 	       	    	 c++;
 	       	     }else {
@@ -158,12 +154,28 @@ public class BagView {
 			}
 			
    		 //show the bag on the interface
-   	     bag.setVisible(true);
+   	     bagView.setVisible(true);
    	     
    	 }
 		
     }
-	public void disappear() {
-		bag.setVisible(false);
+    
+    public void putDown(ActionEvent event) {
+    	controller.removeFromBag();
+		bagView.setVisible(false);
 	}
+    
+	public void disappear(ActionEvent event) {
+		bagView.setVisible(false);
+		
+	}
+
+	public void showBag() {
+		// TODO Auto-generated method stub
+		bagView.setVisible(true);
+		
+		
+	}
+
+	
 }

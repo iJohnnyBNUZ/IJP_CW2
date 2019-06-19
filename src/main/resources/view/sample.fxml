@@ -1,82 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane fx:id="page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.LocationView">
-   <children>
-      <MenuBar layoutY="1.0" prefHeight="22.0" prefWidth="600.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Location">
-            <items>
-              <MenuItem fx:id="originPlace" mnemonicParsing="false" text="origin place" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Item">
-            <items>
-              <MenuItem fx:id="apple" mnemonicParsing="false" text="apple" />
-                  <MenuItem fx:id="orange" mnemonicParsing="false" text="orange" />
-                  <MenuItem fx:id="lemon" mnemonicParsing="false" text="lemon" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Bag">
-               <items>
-                  <MenuItem fx:id="menu_bag" mnemonicParsing="false" text="Open the bag" />
-               </items></Menu>
-        </menus>
-      </MenuBar>
-      <ImageView fx:id="imageView" fitHeight="384.0" fitWidth="512.0" layoutX="44.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="50.0" />
-      <Label fx:id="tip" layoutX="44.0" layoutY="31.0" prefWidth="512.0" />
-      <HBox fx:id="buttonBox" layoutX="153.0" layoutY="451.0" prefHeight="27.0" prefWidth="295.0" />
-      <TitledPane fx:id="bag" collapsible="false" prefHeight="272.0" prefWidth="258.0" text="Bag" visible="false" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
-         <content>
-            <SplitPane dividerPositions="0.8018092105263158" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                     <children>
-                        <GridPane fx:id="InBag" prefHeight="191.2" prefWidth="256.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
-                     </children>
-                  </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                     <children>
-                        <ButtonBar prefHeight="44.8" prefWidth="256.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <buttons>
-                            <Button fx:id="Confirm" mnemonicParsing="false" text="Put down" />
-                              <Button mnemonicParsing="false" text="Close" />
-                          </buttons>
-                           <padding>
-                              <Insets right="10.0" />
-                           </padding>
-                        </ButtonBar>
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
-         </content>
-      </TitledPane>
-   </children>
+    <children>
+        <MenuBar layoutY="1.0" prefHeight="22.0" prefWidth="600.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Location">
+                    <items>
+                        <MenuItem fx:id="originPlace" mnemonicParsing="false" text="origin place" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Bag">
+                    <items>
+                        <MenuItem fx:id="menu_bag" mnemonicParsing="false" onAction="#openBag" text="Open the bag" />
+                    </items></Menu>
+                <Menu mnemonicParsing="false" text="ItemPosition">
+                    <items>
+                        <MenuItem fx:id="menu_position" mnemonicParsing="false" onAction="#chooseItemPosition" text="chooseItemPosition" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ImageView fx:id="imageView" fitHeight="384.0" fitWidth="512.0" layoutX="44.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="50.0" />
+        <Label fx:id="tip" layoutX="44.0" layoutY="31.0" prefWidth="512.0" />
+        <HBox fx:id="buttonBox" layoutX="153.0" layoutY="451.0" prefHeight="27.0" prefWidth="295.0" />
+        <fx:include fx:id="bagView" source="bag.fxml" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
+    </children>
 </AnchorPane>

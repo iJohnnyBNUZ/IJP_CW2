@@ -1,36 +1,38 @@
 package Model;
 
 public class Item {
-    private String itemName;
-    private int ItemPositionX;
-    private int ItemPositionY;
+    private String ItemID;
+    private String ItemName;
+    private double ItemPositionX;
+    private double ItemPositionY;
 
-    public void setPosition(int x, int y){
+    public void setPosition(double x, double y){
         this.ItemPositionX = x;
         this.ItemPositionY = y;
     }
 
+
+    public String getItemID() {
+        return ItemID;
+    }
+
+    public void setItemID(String itemID) {
+        ItemID = itemID;
+    }
+
     public String getItemName() {
-        return itemName;
+        return ItemName;
     }
 
     public void setItemName(String itemName) {
-        this.itemName = itemName;
+        this.ItemName = itemName;
     }
 
-    public int getItemPositionX() {
+    public double getItemPositionX() {
         return ItemPositionX;
     }
 
-    public void setItemPositionX(int itemPositionX) {
-        ItemPositionX = itemPositionX;
-    }
-
-    public int getItemPositionY() {
+    public double getItemPositionY() {
         return ItemPositionY;
-    }
-
-    public void setItemPositionY(int itemPositionY) {
-        ItemPositionY = itemPositionY;
     }
 }
