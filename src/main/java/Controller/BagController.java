@@ -13,4 +13,8 @@ public class BagController {
 		
 	}
 
+	public void itemPosition(double position_x, double position_y) {
+
+	}
+
 }

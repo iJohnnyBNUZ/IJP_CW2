@@ -2,10 +2,10 @@ package Model;
 
 public class Item {
     private String itemName;
-    private int ItemPositionX;
-    private int ItemPositionY;
+    private double ItemPositionX;
+    private double ItemPositionY;
 
-    public void setPosition(int x, int y){
+    public void setPosition(double x, double y){
         this.ItemPositionX = x;
         this.ItemPositionY = y;
     }
@@ -18,19 +18,19 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public int getItemPositionX() {
+    public double getItemPositionX() {
         return ItemPositionX;
     }
 
-    public void setItemPositionX(int itemPositionX) {
+    public void setItemPositionX(double itemPositionX) {
         ItemPositionX = itemPositionX;
     }
 
-    public int getItemPositionY() {
+    public double getItemPositionY() {
         return ItemPositionY;
     }
 
-    public void setItemPositionY(int itemPositionY) {
+    public void setItemPositionY(double itemPositionY) {
         ItemPositionY = itemPositionY;
     }
 }

@@ -56,7 +56,7 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
         launch(args);
-        LoadGame lg = new LoadGame("config/Location.json", "config/Location.json");
+        LoadGame lg = new LoadGame("config/User.json", "config/Location.json");
         lg.loadWorld();
         lg.loadUser();
     }
