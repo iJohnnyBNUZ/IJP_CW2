@@ -35,8 +35,10 @@ public class ItemView {
 	//band ItemsController with ItemView.
     public ItemView(ItemsController controller){
     	this.controller=controller;
-    	this.page = locationView.getPage();
-    }
+		if (locationView != null) {
+			this.page = locationView.getPage();
+		}
+	}
 
     public ItemsController getController() {
 		return controller;

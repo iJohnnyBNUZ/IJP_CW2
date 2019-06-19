@@ -1,64 +1,90 @@
-{
-  "Locations": [
-    {
-      "reception_0": {
-        "id": "loc0",
-        "name": "Reception",
-        "filePath": "resources/images/reception_0.JPG",
-        "neighbors": {
-          "reception_90": 90,
-          "reception_180": 180,
-          "reception_270": 270
-        },
-        "items": [
-          {
-            "id": "apple0",
-            "name": "Apple",
-            "filePath": "/resources/images/apple.png",
-            "positionX": 0,
-            "positionY": 0
-          }
-        ]
+[
+  {
+    "id": "rec0",
+    "name": "Reception",
+    "filePath": "resources/images/reception_0.JPG",
+    "neighbors": [
+      {
+        "id": "rec1",
+        "angle": 90
+      },
+      {
+        "id": "rec2",
+        "angle": 180
+      },
+      {
+        "id": "rec3",
+        "angle": 270
       }
-    },
-    {
-      "reception_90": {
-        "id": "loc1",
-        "name": "Reception",
-        "filePath": "resources/images/reception_90.JPG",
-        "neighbors": {
-          "reception_0": 0,
-          "reception_180": 180,
-          "reception_270": 270
-        },
-        "items": []
+    ],
+    "items": [
+      {
+        "id": "apple0",
+        "name": "Apple",
+        "filePath": "/resources/images/apple.png",
+        "positionX": 0,
+        "positionY": 0
       }
-    },
-    {
-      "reception_180": {
-        "id": "loc2",
-        "name": "Reception",
-        "filePath": "resources/images/reception_180.JPG",
-        "neighbors": {
-          "reception_0": 0,
-          "reception_90": 90,
-          "reception_270": 270
-        },
-        "items": []
+    ]
+  },
+  {
+    "id": "rec1",
+    "name": "Reception",
+    "filePath": "resources/images/reception_90.JPG",
+    "neighbors": [
+      {
+        "id": "rec0",
+        "angle": 0
+      },
+      {
+        "id": "rec2",
+        "angle": 180
+      },
+      {
+        "id": "rec3",
+        "angle": 270
       }
-    },
-    {
-      "reception_270": {
-        "id": "loc3",
-        "name": "Reception",
-        "filePath": "resources/images/reception_270.JPG",
-        "neighbors": {
-          "reception_0": 0,
-          "reception_90": 90,
-          "reception_180": 180
-        },
-        "items": []
+    ],
+    "items": []
+  },
+  {
+    "id": "rec2",
+    "name": "Reception",
+    "filePath": "resources/images/reception_180.JPG",
+    "neighbors": [
+      {
+        "id": "rec0",
+        "angle": 0
+      },
+      {
+        "id": "rec1",
+        "angle": 90
+      },
+      {
+        "id": "rec3",
+        "angle": 270
       }
-    }
-  ]
-}
+    ],
+    "items": []
+  },
+  {
+    "id": "rec3",
+    "name": "Reception",
+    "filePath": "resources/images/reception_270.JPG",
+    "neighbors": [
+      {
+        "id": "rec0",
+        "angle": 0
+      },
+      {
+        "id": "rec1",
+        "angle": 90
+      },
+      {
+        "id": "rec2",
+        "angle": 180
+      }
+    ],
+    "items": []
+  }
+]

@@ -6,8 +6,7 @@ public class Item {
     private double ItemPositionX;
     private double ItemPositionY;
 
-    public void setPosition(String itemID, double x, double y){
-        this.ItemID = itemID;
+    public void setPosition(double x, double y){
         this.ItemPositionX = x;
         this.ItemPositionY = y;
     }
@@ -33,15 +32,7 @@ public class Item {
         return ItemPositionX;
     }
 
-    public void setItemPositionX(double itemPositionX) {
-        ItemPositionX = itemPositionX;
-    }
-
     public double getItemPositionY() {
         return ItemPositionY;
-    }
-
-    public void setItemPositionY(double itemPositionY) {
-        ItemPositionY = itemPositionY;
     }
 }
