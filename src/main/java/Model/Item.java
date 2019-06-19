@@ -1,21 +1,32 @@
 package Model;
 
 public class Item {
-    private String itemName;
+    private String ItemID;
+    private String ItemName;
     private double ItemPositionX;
     private double ItemPositionY;
 
-    public void setPosition(double x, double y){
+    public void setPosition(String itemID, double x, double y){
+        this.ItemID = itemID;
         this.ItemPositionX = x;
         this.ItemPositionY = y;
     }
 
+
+    public String getItemID() {
+        return ItemID;
+    }
+
+    public void setItemID(String itemID) {
+        ItemID = itemID;
+    }
+
     public String getItemName() {
-        return itemName;
+        return ItemName;
     }
 
     public void setItemName(String itemName) {
-        this.itemName = itemName;
+        this.ItemName = itemName;
     }
 
     public double getItemPositionX() {
