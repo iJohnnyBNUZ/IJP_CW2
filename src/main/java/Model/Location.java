@@ -1,10 +1,9 @@
 package Model;
 
 import View.ItemView;
+import View.LocationView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Location {
     private String locationName;
@@ -55,11 +54,23 @@ public class Location {
     }
 
     public Location getLocationAtAngle(int angle){
-        int i = angle/180;
+        int i = angle/60;
         if(neighbors.containsKey(i)){
             return neighbors.get(i);
         }else{
             return null;
         }
+    }
+
+    public void initialLocation(){
+        List<Integer> arrowAngles = new LinkedList<>();
+        Set<Map.Entry<Integer, Location>> eSet = getNeighbors().entrySet();
+        Iterator<Map.Entry<Integer, Location>> it = eSet.iterator();
+        while (it.hasNext()){
+            arrowAngles.add(it.next().getKey());
+        }
+
+        LocationView.getLocationView().updateLocation(getLocationName(),arrowAngles );
+        ItemView.getItemView().updateItems(this.items);
     }
 }
