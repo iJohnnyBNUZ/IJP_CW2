@@ -14,9 +14,22 @@ public class LoadGame {
     private String userSave;
     private String worldSave;
 
+
     public LoadGame(String userSave, String worldSave) {
         this.userSave = userSave;
         this.worldSave = worldSave;
+    }
+
+
+    public void Initialise(ViewController viewcontroller){
+        LocationController locationcontroller = new LocationController();
+        ItemsController itemscontroller = new ItemsController();
+        BagController bagcontroller = new BagController();
+        viewcontroller.setLocationController(locationcontroller);
+        viewcontroller.setItemsController(itemscontroller);
+        viewcontroller.setBagController(bagcontroller);
+        this.loadWorld();
+        this.loadUser();
     }
 
     public void loadWorld() {
@@ -51,9 +64,10 @@ public class LoadGame {
                 user.addItem(item);
             }
             World.getWorld().addUser(user);
+
         }
         World.getWorld().getAllUsers().get(0).getCurrentLocation().initialLocation();
-//        World.getWorld().getAllUsers().get(0).getCurrentLocation().initItems();
+
     }
 
     private void buildLocation(Location location, JsonObject locData) {

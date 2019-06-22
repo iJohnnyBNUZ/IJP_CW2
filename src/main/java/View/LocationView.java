@@ -1,7 +1,9 @@
 package View;
 
 import Controller.BagController;
+import Controller.LoadGame;
 import Controller.LocationController;
+import Controller.ViewController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -23,61 +25,48 @@ import java.util.List;
 
 public class LocationView {
     private static volatile LocationView locationView = null;
-
-    private LocationController locationcontroller = null;
-    private BagController bagcontroller = null;
+    private ViewController viewcontroller;
+    private LocationController locationcontroller;
     private double position_x, position_y;
-    
-    @FXML
-    private AnchorPane page; 
 
-    @FXML
     private ImageView imageView;
     private HBox buttonBox;
-    
-    @FXML
-	private MenuItem menu_bag;
-	
-    @FXML
-    private BagView bagViewController;
-    
-    
-    private ItemView itemViewController;
-    
-    @FXML
-    private void initialize() {
-    	bagViewController.injectMainController(this);
-    	itemViewController = new ItemView(this);
+    private MenuItem menu_bag;
+    private MenuItem menu_position;
+
+    public LocationView(ViewController viewcontroller){
+        this.viewcontroller = viewcontroller;
+        imageView = viewcontroller.getImageView();
+        buttonBox = viewcontroller.getHBox();
+        menu_bag = viewcontroller.getMenuBag();
+        menu_position = viewcontroller.getMenuPosition();
+        menu_bag.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+            }
+        });
+        menu_position.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+            }
+        });
+        locationcontroller = viewcontroller.getLocationController();
     }
-    
+
+    public void setViewController(ViewController controller){this.viewcontroller = controller;}
+    public ViewController getViewController(){return viewcontroller;}
+
 
     public void setLocationController(LocationController controller){this.locationcontroller = controller;}
     public LocationController getLocationController(){return locationcontroller;}
 
-    public void setBagController(BagController controller){this.bagcontroller = controller;}
-    public BagController getBagController(){return bagcontroller;}
-
-
-    public BagView getBagViewController() {
-		return bagViewController;
-	}
-
-	public void setBagViewController(BagView bagViewController) {
-		this.bagViewController = bagViewController;
-	}
-
-	public ItemView getItemViewController() {
-		return itemViewController;
-	}
-
-	public void setItemViewController(ItemView itemViewController) {
-		this.itemViewController = itemViewController;
-	}
 
 	public static LocationView getLocationView(){
         synchronized (LocationView.class){
             if(locationView == null){
-                locationView = new LocationView();
+                locationView = new LocationView(ViewController.getViewController());
             }
         }
 
@@ -103,7 +92,6 @@ public class LocationView {
         button.setRotate(arrowAngle);
         buttonBox.getChildren().add(button);
         button.setOnAction(new EventHandler<ActionEvent>() {
-             
             public void handle(ActionEvent event) {
             	// TODO Auto-generated method stub
                 if(locationcontroller != null){
@@ -115,9 +103,13 @@ public class LocationView {
 
     }
 
-    public void chooseItemPosition (ActionEvent event){
+
+
+    /*
+    public void chooseItemPosition (){
         imageView.setEffect(new GaussianBlur());
         imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            private BagController bagcontroller = viewcontroller.getBagController();
             @Override
             public void handle(MouseEvent mouse_event) {
                 position_x = mouse_event.getX();
@@ -127,14 +119,16 @@ public class LocationView {
             }
         });
     }
-    
+    */
+
+
+
+    /*
     public void openBag(ActionEvent event) {
 		// TODO Auto-generated method stub
-    	bagViewController.showBag();
+    	//bagViewController.showBag();
 	}
+	*/
     
-    public AnchorPane getPage() {
-		// TODO Auto-generated method stub
-    	return page;
-	}
+
 }
