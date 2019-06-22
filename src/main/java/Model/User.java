@@ -51,10 +51,18 @@ public class User {
 
     public void addItem(Item item){
         currentLocation.addItem(item);
+        bag.add(item);
     }
 
     public void removeItem(Item item){
         currentLocation.removeItem(item);
+        bag.remove(item);
+
+        List<String> itemsName = new ArrayList<>();
+        for(Item item1 : bag){
+            itemsName.add(item1.getItemName());
+        }
+        BagView.getBagView().updateBag(itemsName);
     }
 
     public void moveInDirection(int angle){
