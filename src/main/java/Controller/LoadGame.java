@@ -24,7 +24,7 @@ public class LoadGame {
         JsonArray locationArray = new JsonParser().parse(locationSaveString).getAsJsonArray();
 
         for(int i = 0; i < locationArray.size(); i++) {
-            String locationID = String.valueOf(locationArray.get(i).getAsJsonObject().get("id"));
+            String locationID = locationArray.get(i).getAsJsonObject().get("id").getAsString();
 
             if(World.getWorld().getLocationByID(locationID) == null) {
                 Location location = new Location();
@@ -42,9 +42,9 @@ public class LoadGame {
         JsonArray userArray = new JsonParser().parse(userSaveString).getAsJsonArray();
         for(int i = 0; i < userArray.size(); i++) {
             User user = new User();
-            JsonObject userData = userArray.get(i).getAsJsonObject();
-            user.setUserID(String.valueOf(userData.get("id")));
-            user.setCurrentLocation(World.getWorld().getLocationByID(String.valueOf(userData.get("currentLocation"))));
+            JsonObject userData = userArray.get(i).getAsJsonObject().get("player_0").getAsJsonObject();
+            user.setUserID(userData.get("id").getAsString());
+            user.setCurrentLocation(World.getWorld().getLocationByID(userData.get("currentLocation").getAsString()));
             for (int j = 0; j < userData.getAsJsonArray("items").size(); j++) {
                 Item item = new Item();
                 buildItem(item, userData.getAsJsonArray("items").get(j).getAsJsonObject());
@@ -52,11 +52,13 @@ public class LoadGame {
             }
             World.getWorld().addUser(user);
         }
+        World.getWorld().getAllUsers().get(0).getCurrentLocation().initialLocation();
+//        World.getWorld().getAllUsers().get(0).getCurrentLocation().initItems();
     }
 
     private void buildLocation(Location location, JsonObject locData) {
-        location.setLocationID(String.valueOf(locData.get("id")));
-        location.setLocationName(String.valueOf(locData.get("filePath")));
+        location.setLocationID(locData.get("id").getAsString());
+        location.setLocationName(locData.get("filePath").getAsString());
         for (int i = 0; i < locData.getAsJsonArray("items").size(); i++) {
             Item item = new Item();
             buildItem(item, locData.getAsJsonArray("items").get(i).getAsJsonObject());
@@ -64,23 +66,23 @@ public class LoadGame {
         }
         JsonArray neighborArray = locData.getAsJsonArray("neighbors");
         for(int i = 0; i < neighborArray.size(); i++) {
-            if(World.getWorld().getLocationByID(String.valueOf(neighborArray.get(i).getAsJsonObject().get("id"))) != null) {
-                location.addNeighbor(World.getWorld().getLocationByID(String.valueOf(neighborArray.get(i).getAsJsonObject().get("id"))), Integer.parseInt(String.valueOf(neighborArray.get(i).getAsJsonObject().get("angle"))));
+            if(World.getWorld().getLocationByID(neighborArray.get(i).getAsJsonObject().get("id").getAsString()) != null) {
+                location.addNeighbor(World.getWorld().getLocationByID(neighborArray.get(i).getAsJsonObject().get("id").getAsString()), neighborArray.get(i).getAsJsonObject().get("angle").getAsInt());
             }
             else {
                 Location newNeighbor = new Location();
-                newNeighbor.setLocationID(String.valueOf(neighborArray.get(i).getAsJsonObject().get("id")));
+                newNeighbor.setLocationID(neighborArray.get(i).getAsJsonObject().get("id").getAsString());
                 World.getWorld().addLocation(newNeighbor);
-                location.addNeighbor(newNeighbor, Integer.parseInt(String.valueOf(neighborArray.get(i).getAsJsonObject().get("angle"))));
+                location.addNeighbor(newNeighbor, neighborArray.get(i).getAsJsonObject().get("angle").getAsInt());
             }
         }
     }
 
     private void buildItem(Item item, JsonObject itemData) {
-        item.setItemID(String.valueOf(itemData.get("id")));
-        item.setItemName(String.valueOf(itemData.get("filePath")));
-        double x = Double.parseDouble(String.valueOf(itemData.get("positionX")));
-        double y = Double.parseDouble(String.valueOf(itemData.get("positionY")));
+        item.setItemID(itemData.get("id").getAsString());
+        item.setItemName(itemData.get("name").getAsString());
+        double x = itemData.get("positionX").getAsDouble();
+        double y = itemData.get("positionY").getAsDouble();
         item.setPosition(x, y);
     }
 }

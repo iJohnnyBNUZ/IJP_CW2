@@ -8,13 +8,10 @@ import java.util.*;
 
 public class User {
     private String userID;
-    private List<Item> bag;
+    private List<Item> bag = new ArrayList<>();
     private Location currentLocation;
 
-    public User(String userID, List<Item> bag, Location currentLocation) {
-        this.userID = userID;
-        this.bag = bag;
-        this.currentLocation = currentLocation;
+    public User() {
     }
 
     public String getUserID() {
@@ -50,7 +47,6 @@ public class User {
     }
 
     public void addItem(Item item){
-        currentLocation.addItem(item);
         bag.add(item);
     }
 

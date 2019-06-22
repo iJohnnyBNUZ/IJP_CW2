@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+import java.io.File;
 import java.net.URL;
 import java.util.List;
 
@@ -85,8 +86,8 @@ public class LocationView {
 
 
     public void updateLocation(String locationName, List<Integer> arrowAngles) {
-         URL locationviewurl = getClass().getResource("images/"+locationName+".jpg");
-         Image locationimage = new Image(locationviewurl.toString());
+        File file = new File(getClass().getResource("/images/"+locationName+".JPG").getFile());
+         Image locationimage = new Image(file.toURI().toString());
          imageView.setImage(locationimage);
          int buttonbox_width = 60 * arrowAngles.size();
          buttonBox.setPrefWidth(buttonbox_width);

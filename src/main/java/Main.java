@@ -41,23 +41,22 @@ public class Main extends Application {
         LocationView controller = (LocationView)fxmlLoader.getController(); 
         bandView(controller,locationController,itemController,bagController);
         primaryStage.show();
-        
-        
+        LoadGame lg = new LoadGame("config/User.json", "config/Location.json");
+        lg.loadWorld();
+        lg.loadUser();
+        System.out.println("Finished Loading");
     }
 
 
-    private void bandView(LocationView view, LocationController locationController, 
+    private void bandView(LocationView view, LocationController locationController,
     		ItemsController itemController, BagController bagController) {
 		// TODO Auto-generated method stub
 		view.getBagViewController().setController(bagController);
 		view.getItemViewController().setController(itemController);
-	}
+    }
 
 
 	public static void main(String[] args) {
         launch(args);
-        LoadGame lg = new LoadGame("config/User.json", "config/Location.json");
-        lg.loadWorld();
-        lg.loadUser();
     }
 }

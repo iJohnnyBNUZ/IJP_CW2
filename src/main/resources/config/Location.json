@@ -2,7 +2,7 @@
   {
     "id": "rec0",
     "name": "Reception",
-    "filePath": "resources/images/reception_0.JPG",
+    "filePath": "reception_0",
     "neighbors": [
       {
         "id": "rec1",
@@ -21,7 +21,7 @@
       {
         "id": "apple0",
         "name": "Apple",
-        "filePath": "/resources/images/apple.png",
+        "filePath": "apple",
         "positionX": 0,
         "positionY": 0
       }
@@ -30,7 +30,7 @@
   {
     "id": "rec1",
     "name": "Reception",
-    "filePath": "resources/images/reception_90.JPG",
+    "filePath": "reception_90",
     "neighbors": [
       {
         "id": "rec0",
@@ -50,7 +50,7 @@
   {
     "id": "rec2",
     "name": "Reception",
-    "filePath": "resources/images/reception_180.JPG",
+    "filePath": "reception_180",
     "neighbors": [
       {
         "id": "rec0",
@@ -70,7 +70,7 @@
   {
     "id": "rec3",
     "name": "Reception",
-    "filePath": "resources/images/reception_270.JPG",
+    "filePath": "reception_270",
     "neighbors": [
       {
         "id": "rec0",

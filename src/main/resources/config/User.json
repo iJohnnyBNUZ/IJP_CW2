@@ -7,8 +7,10 @@
       "items": [
         {
           "id": "lemon0",
-          "name": "Lemon",
-          "filePath": "/resources/images/lemon.png"
+          "name": "lemon",
+          "filePath": "lemon",
+          "positionX": 0,
+          "positionY": 0
         }
       ]
     }

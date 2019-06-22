@@ -7,15 +7,11 @@ import java.util.*;
 
 public class Location {
     private String locationName;
-    private HashMap<Integer,Location> neighbors;
+    private HashMap<Integer,Location> neighbors = new HashMap<>();
     private List<Item> items = new ArrayList<>();
     private String locationID;
 
-    public Location(String locationName, HashMap<Integer, Location> neighbors, List<Item> items, String locationID) {
-        this.locationName = locationName;
-        this.neighbors = neighbors;
-        this.items = items;
-        this.locationID = locationID;
+    public Location() {
     }
 
     public String getLocationName() {
@@ -59,7 +55,7 @@ public class Location {
 
     public void addItem(Item item){
         this.items.add(item);
-        ItemView.getItemView().updateItems(getItems());
+//        ItemView.getItemView().updateItems(getItems());
     }
 
     public void removeItem(Item item){
@@ -83,8 +79,11 @@ public class Location {
         while (it.hasNext()){
             arrowAngles.add(it.next().getKey());
         }
-
+        World world = World.getWorld();
         LocationView.getLocationView().updateLocation(getLocationName(),arrowAngles );
+    }
+
+    public void initItems() {
         ItemView.getItemView().updateItems(this.items);
     }
 }
