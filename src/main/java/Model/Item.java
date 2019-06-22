@@ -6,6 +6,13 @@ public class Item {
     private double ItemPositionX;
     private double ItemPositionY;
 
+    public Item(String itemID, String itemName, double itemPositionX, double itemPositionY) {
+        ItemID = itemID;
+        ItemName = itemName;
+        ItemPositionX = itemPositionX;
+        ItemPositionY = itemPositionY;
+    }
+
     public void setPosition(double x, double y){
         this.ItemPositionX = x;
         this.ItemPositionY = y;

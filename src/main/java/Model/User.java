@@ -11,6 +11,12 @@ public class User {
     private List<Item> bag;
     private Location currentLocation;
 
+    public User(String userID, List<Item> bag, Location currentLocation) {
+        this.userID = userID;
+        this.bag = bag;
+        this.currentLocation = currentLocation;
+    }
+
     public String getUserID() {
         return userID;
     }

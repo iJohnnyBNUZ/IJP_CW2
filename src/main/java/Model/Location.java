@@ -11,6 +11,13 @@ public class Location {
     private List<Item> items = new ArrayList<>();
     private String locationID;
 
+    public Location(String locationName, HashMap<Integer, Location> neighbors, List<Item> items, String locationID) {
+        this.locationName = locationName;
+        this.neighbors = neighbors;
+        this.items = items;
+        this.locationID = locationID;
+    }
+
     public String getLocationName() {
         return locationName;
     }
