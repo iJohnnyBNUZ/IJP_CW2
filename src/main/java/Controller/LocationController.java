@@ -9,5 +9,6 @@ public class LocationController {
         // Temporary workaround until we implement some way to get users by String
         User user = World.getWorld().getAllUsers().get(0);
         user.moveInDirection(arrowAngle);
+        user.getCurrentLocation().initialLocation();
     }
 }

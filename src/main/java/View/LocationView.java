@@ -80,14 +80,16 @@ public class LocationView {
          imageView.setImage(locationimage);
          int buttonbox_width = 60 * arrowAngles.size();
          buttonBox.setPrefWidth(buttonbox_width);
+         buttonBox.getChildren().clear();
          for(int i=0; i<arrowAngles.size(); i++){
+             System.out.println(arrowAngles.get(i));
              addArrows(arrowAngles.get(i));
          }
     }
 
 
     public void addArrows(Integer arrowAngle){
-        Button button = new Button("↑");
+        Button button = new Button("←");
         button.setPrefWidth(60);
         button.setRotate(arrowAngle);
         buttonBox.getChildren().add(button);
