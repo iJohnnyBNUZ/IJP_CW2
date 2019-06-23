@@ -29,11 +29,13 @@
                         <MenuItem fx:id="menu_bag" mnemonicParsing="false" text="Open the bag" />
                     </items>
                 </Menu>
+                <!--
                 <Menu mnemonicParsing="false" text="ItemPosition">
                     <items>
                         <MenuItem fx:id="menu_position" mnemonicParsing="false" text="chooseItemPosition" />
                     </items>
                 </Menu>
+                -->
             </menus>
         </MenuBar>
         <ImageView fx:id="imageView" fitHeight="384.0" fitWidth="512.0" layoutX="44.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="50.0" />
