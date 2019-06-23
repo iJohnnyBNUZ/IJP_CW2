@@ -78,6 +78,8 @@ public class Location {
         while (it.hasNext()){
             arrowAngles.add(it.next().getKey());
         }
+
+        Collections.sort(arrowAngles);
         World world = World.getWorld();
         LocationView.getLocationView().updateLocation(getLocationName(),arrowAngles );
 

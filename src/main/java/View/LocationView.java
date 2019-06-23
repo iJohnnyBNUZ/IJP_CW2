@@ -27,6 +27,7 @@ public class LocationView {
     private static volatile LocationView locationView = null;
     private ViewController viewcontroller = null;
     private LocationController locationcontroller = null;
+    //private BagController bagcontroller = null;
     private double position_x, position_y;
 
     private ImageView imageView;
@@ -34,27 +35,32 @@ public class LocationView {
     private MenuItem menu_bag;
     private MenuItem menu_position;
     private AnchorPane itemspage;
+    private TitledPane bagView;
 
     public LocationView(ViewController viewcontroller){
         this.viewcontroller = viewcontroller;
         this.locationcontroller = viewcontroller.getLocationController();
+        //this.bagcontroller = viewcontroller.getBagController();
         this.imageView = viewcontroller.getImageView();
         this.buttonBox = viewcontroller.getHBox();
         this.menu_bag = viewcontroller.getMenuBag();
         this.menu_position = viewcontroller.getMenuPosition();
         this.itemspage = viewcontroller.getItemsPage();
+        this.bagView = viewcontroller.getBagView();
         menu_bag.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                bagView.setVisible(true);
             }
         });
+        /*
         menu_position.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
             }
         });
+        */
     }
 
     public void setViewController(ViewController controller){this.viewcontroller = controller;}
@@ -65,7 +71,7 @@ public class LocationView {
     public LocationController getLocationController(){return locationcontroller;}
 
 
-	public static LocationView getLocationView(){
+    public static LocationView getLocationView(){
         synchronized (LocationView.class){
             if(locationView == null){
                 locationView = new LocationView(ViewController.getViewController());
@@ -80,6 +86,7 @@ public class LocationView {
          File file = new File(getClass().getResource("/images/"+locationName+".JPG").getFile());
          Image locationimage = new Image(file.toURI().toString());
          imageView.setImage(locationimage);
+         bagView.setVisible(false);
          int buttonbox_width = 60 * arrowAngles.size();
          buttonBox.setPrefWidth(buttonbox_width);
          buttonBox.getChildren().clear();
@@ -108,31 +115,6 @@ public class LocationView {
     }
 
 
-
-    /*
-    public void chooseItemPosition (){
-        imageView.setEffect(new GaussianBlur());
-        imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            private BagController bagcontroller = viewcontroller.getBagController();
-            @Override
-            public void handle(MouseEvent mouse_event) {
-                position_x = mouse_event.getX();
-                position_y = mouse_event.getY();
-                imageView.setEffect(null);
-                bagcontroller.itemPosition(position_x, position_y);
-            }
-        });
-    }
-    */
-
-
-
-    /*
-    public void openBag(ActionEvent event) {
-		// TODO Auto-generated method stub
-    	//bagViewController.showBag();
-	}
-	*/
     
 
 }

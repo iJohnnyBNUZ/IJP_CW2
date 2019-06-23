@@ -3,13 +3,13 @@ package Model;
 public class Item {
     private String ItemID;
     private String ItemName;
-    private double ItemPositionX;
-    private double ItemPositionY;
+    private Double ItemPositionX;
+    private Double ItemPositionY;
 
     public Item() {
     }
 
-    public void setPosition(double x, double y){
+    public void setPosition(Double x, Double y){
         this.ItemPositionX = x;
         this.ItemPositionY = y;
     }
@@ -31,11 +31,11 @@ public class Item {
         this.ItemName = itemName;
     }
 
-    public double getItemPositionX() {
+    public Double getItemPositionX() {
         return ItemPositionX;
     }
 
-    public double getItemPositionY() {
+    public Double getItemPositionY() {
         return ItemPositionY;
     }
 }

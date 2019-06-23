@@ -61,13 +61,15 @@ public class LoadGame {
             for (int j = 0; j < userData.getAsJsonArray("items").size(); j++) {
                 Item item = new Item();
                 buildItem(item, userData.getAsJsonArray("items").get(j).getAsJsonObject());
-                user.addItem(item);
+                //user.addItem(item);
+                user.getBag().add(item);
             }
             World.getWorld().addUser(user);
 
         }
         World.getWorld().getAllUsers().get(0).getCurrentLocation().initialLocation();
         World.getWorld().getAllUsers().get(0).getCurrentLocation().initialItems();
+        World.getWorld().getAllUsers().get(0).updateBagView();
     }
 
     private void buildLocation(Location location, JsonObject locData) {
@@ -95,8 +97,8 @@ public class LoadGame {
     private void buildItem(Item item, JsonObject itemData) {
         item.setItemID(itemData.get("id").getAsString());
         item.setItemName(itemData.get("name").getAsString());
-        double x = itemData.get("positionX").getAsDouble();
-        double y = itemData.get("positionY").getAsDouble();
+        Double x = itemData.get("positionX").getAsDouble();
+        Double y = itemData.get("positionY").getAsDouble();
         item.setPosition(x, y);
     }
 }

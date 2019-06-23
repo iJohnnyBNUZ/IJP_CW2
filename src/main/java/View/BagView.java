@@ -1,25 +1,24 @@
 package View;
 
 import java.net.URL;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import Controller.BagController;
+import Controller.ViewController;
+import Model.Item;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-
-import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * An view for the virtual world application which uses JavaFx
@@ -30,8 +29,177 @@ import java.util.Collections;
  * @version 1.0;
  */
 public class BagView {
-	
-	private LocationView locationView;
+
+	private static volatile BagView bagview = null;
+	private ViewController viewcontroller = null;
+	private BagController bagcontroller = null;
+	private GridPane inBag;
+	private Button confirm;
+	private Button close;
+	private int row=3;
+	private int column=3;
+	private double image_h = 50.0;
+	private double image_w =50.0;
+	private TitledPane bagView;
+	private AnchorPane itemspage;
+	private ImageView imageView;
+
+	public BagView(ViewController viewcontroller){
+          this.viewcontroller = viewcontroller;
+          this.bagcontroller = viewcontroller.getBagController();
+          this.inBag = viewcontroller.getInBag();
+		  this.bagView = viewcontroller.getBagView();
+		  this.confirm = viewcontroller.getConfirm();
+		  this.close = viewcontroller.getClose();
+		  this.itemspage = viewcontroller.getItemsPage();
+		  this.imageView = viewcontroller.getImageView();
+		  close.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				bagView.setVisible(false);
+			}
+		  });
+	}
+
+	public void setViewController(ViewController controller){this.viewcontroller = controller;}
+	public ViewController getViewController(){return viewcontroller;}
+
+
+	public void setBagController(BagController controller){this.bagcontroller = controller;}
+	public BagController getLocationController(){return bagcontroller;}
+
+	public static BagView getBagView(){
+		synchronized (BagView.class){
+			if(bagview == null){
+				bagview = new BagView(ViewController.getViewController());
+			}
+		}
+
+		return bagview;
+	}
+
+	public void updateBag(List<Item> bag) {
+		System.out.println(bag.size());
+		inBag.getChildren().clear();
+		int r = 0;
+		int c = 0;
+		List<String> bagItems = new LinkedList<>();
+		for (Item item: bag){
+			bagItems.add(item.getItemName());
+		}
+
+		if (bagItems != null) {
+			//convert the list to set.
+			Set<String> uniqueSet = new HashSet<String>(bagItems);
+			for (final String tmp_name : uniqueSet) {
+
+				//Item item_bag = null;
+				if (r > row - 1) {
+					System.out.println("ERROR");
+					break;
+				}
+
+
+				//create border pane for each item
+				final BorderPane item = new BorderPane();
+
+				//create label to show the number of item
+				Label item_num = new Label("" + Collections.frequency(bagItems, tmp_name));
+
+				item.setBottom(item_num);
+
+				//create ImageView to each of the items
+				ImageView item_img = new ImageView();
+				URL url = this.getClass().getResource("/images/" + tmp_name + ".png");
+				Image image = new Image(url.toString(), image_h, image_w, false, false);
+				//final String style = "-fx-background-color:  #ffffff";
+				GaussianBlur effect = new GaussianBlur();
+				item_img.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+					public void handle(MouseEvent arg0) {
+
+						/*
+						// TODO Auto-generated method stub
+						if (item.getStyle() == style) {
+							item.setStyle("");
+							bagcontroller.unselect(tmp_name);
+						} else {
+							item.setStyle(style);
+						}
+						*/
+						if(item_img.getEffect() == effect){
+							item_img.setEffect(null);
+						}
+						else{
+							item_img.setEffect(effect);
+						}
+						//bagcontroller.select(tmp_name);
+					}
+
+				});
+				confirm.setOnAction(new EventHandler<ActionEvent>() {
+					Item item_bag = null;
+					@Override
+					public void handle(ActionEvent event) {
+
+						if(item_img.getEffect() == effect){
+							for(int i=0; i<bag.size();i++){
+								if(bag.get(i).getItemName()==tmp_name){
+									item_bag = bag.get(i);
+									System.out.println(tmp_name);
+									break;
+								}
+							}
+							System.out.println(item_bag.getItemPositionX());
+							ImageView item_location = new ImageView();
+							item_location.setImage(image);
+							if(item_bag.getItemPositionX()==-1.0 && item_bag.getItemPositionY()==-1.0){
+								bagView.setVisible(false);
+								imageView.setEffect(effect);
+								imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+									@Override
+									public void handle(MouseEvent event) {
+										//System.out.println(2323);
+										item_location.setLayoutX(event.getX());
+										item_location.setLayoutY(event.getY());
+										item_bag.setPosition(event.getX(),event.getY());
+									}
+								});
+								imageView.setEffect(null);
+								item_location.setLayoutX(0);
+								item_location.setLayoutY(0);
+								itemspage.getChildren().add(item_location);
+								System.out.println(item_bag);
+								bagcontroller.removeFromBag(item_bag);
+							}
+
+						}
+					}
+				});
+
+
+				//create item's image.
+				item_img.setImage(image);
+
+				item.setCenter(item_img);
+				//set the item's position.
+				inBag.add(item, c, r);
+				if (c < column - 1) {
+					c++;
+				} else {
+					c = 0;
+					r++;
+				}
+
+			}
+
+			//show the bag on the interface
+			//bagView.setVisible(true);
+
+		}
+	}
+
+	/*
 	
 	@FXML
 	private GridPane InBag; 
@@ -59,10 +227,16 @@ public class BagView {
     	this.locationView = locationView;
 		
 	}
+
+	*/
+
+
     
     /**for test the update bag method
      * after the controller is finished, this method can be removed
      * */
+
+    /*
     public void initialize() {
     	
     	List<String> tmp = new ArrayList<String>();
@@ -177,5 +351,5 @@ public class BagView {
 		
 	}
 
-	
+	*/
 }

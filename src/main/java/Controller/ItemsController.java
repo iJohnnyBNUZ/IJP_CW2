@@ -9,8 +9,8 @@ public class ItemsController {
 		// Temporary workaround until we implement some way to get users by String
 		User user = World.getWorld().getAllUsers().get(0);
 		user.addItem(item);
-		//user.getCurrentLocation().removeItem(item);
-		//user.getCurrentLocation().initialItems();
+		item.setPosition(-1.0,-1.0);
+		user.updateBagView();
 	}
 
 	public void putDown(Item item) {

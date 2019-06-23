@@ -2,9 +2,12 @@ package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 
@@ -30,6 +33,19 @@ public class ViewController {
 
     @FXML
     private AnchorPane itemspage;
+
+    @FXML
+    private GridPane inBag;
+
+    @FXML
+    private TitledPane bagView;
+
+    @FXML
+    private Button confirm;
+
+    @FXML
+    private Button close;
+
 
     private static volatile ViewController viewcontroller;
 
@@ -67,6 +83,13 @@ public class ViewController {
         return menu_position;
     }
 
+    public GridPane getInBag(){ return inBag; }
+
+    public TitledPane getBagView(){ return bagView; }
+
+    public Button getConfirm(){ return confirm; }
+
+    public Button getClose(){ return close; }
 
     public void setLocationController(LocationController controller){
         this.locationcontroller = controller;

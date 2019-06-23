@@ -33,8 +33,14 @@ public class ItemView {
     	this.page = viewcontroller.getItemsPage();
 	}
 
-    
-    public static ItemView getItemView(){
+	public void setViewController(ViewController controller){this.viewcontroller = controller;}
+	public ViewController getViewController(){return viewcontroller;}
+
+	public void setItemController(ItemsController controller){this.itemscontroller = controller;}
+	public ItemsController getItemController(){return itemscontroller;}
+
+
+	public static ItemView getItemView(){
         synchronized (ItemView.class){
             if(itemView == null){
                 itemView = new ItemView(ViewController.getViewController());
@@ -51,7 +57,6 @@ public class ItemView {
 	 */
     public void updateItems(List<Item> items) {
     	 if(items!=null) {
-             //page.getChildren().clear();
     		 for(int i=0;i<items.size();i++) {	 
     			final Item tmp = items.get(i);
     			 

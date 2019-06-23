@@ -63,6 +63,17 @@ public class User {
         currentLocation = currentLocation.getLocationAtAngle(angle);
     }
 
+    public void updateBagView(){
+        /*
+        List<String> bagItems = new LinkedList<>();
+        for (Item item: bag){
+            bagItems.add(item.getItemName());
+        }
+        */
+        System.out.println(bag.size());
+        BagView.getBagView().updateBag(bag);
+    }
+    /*
     public void updateView(){
 
 //        get all keys from hashMap
@@ -83,4 +94,5 @@ public class User {
         }
         //BagView.getBagView().updateBag(bagItems);
     }
+    */
 }

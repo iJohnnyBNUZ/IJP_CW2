@@ -1,18 +1,19 @@
 [
-  {
-    "player_0": {
+  { "player_0":
+    {
       "id": "play0",
       "name": "Paul",
       "currentLocation": "rec0",
       "items": [
-        {
-          "id": "lemon0",
-          "name": "lemon",
-          "filePath": "lemon",
-          "positionX": 0,
-          "positionY": 0
-        }
+       {
+        "id": "lemon0",
+        "name": "lemon",
+        "filePath": "lemon",
+        "positionX": -1.0,
+        "positionY": -1.0
+       }
       ]
     }
   }
+
 ]
