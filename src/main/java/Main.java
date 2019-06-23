@@ -39,7 +39,7 @@ public class Main extends Application {
         fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("Hello World");
-        Scene scene = new Scene(root, 400, 400);
+        Scene scene = new Scene(root, 600, 500);
         primaryStage.setScene(scene);
         ViewController viewcontroller = (ViewController) fxmlLoader.getController();
         //bandView(controller,locationController,itemController,bagController);

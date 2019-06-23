@@ -61,7 +61,7 @@ public class ItemView {
     			final Item tmp = items.get(i);
     			 
     			 //create ImageView to each of the items
-        		 ImageView item_v = new ImageView();
+        		 final ImageView item_v = new ImageView();
         		 item_v.setOnMouseClicked(new EventHandler<MouseEvent>(){
 					public void handle(MouseEvent arg0) {
 						// TODO Auto-generated method stub

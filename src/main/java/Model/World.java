@@ -10,6 +10,7 @@ public class World {
     private World(){}
 
     public static World getWorld(){
+    	System.out.println("have");
         if (world == null){
             synchronized (World.class){
                 if (world == null){
@@ -18,11 +19,12 @@ public class World {
             }
         }
         
+        
         return world;
     }
 
-    private List<Location> allLocations = new ArrayList<>();
-    private List<User> allUsers = new ArrayList<>();
+    private List<Location> allLocations = new ArrayList<Location>();
+    private List<User> allUsers = new ArrayList<User>();
 
     public List<Location> getAllLocations() {
         return allLocations;

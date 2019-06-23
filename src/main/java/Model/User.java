@@ -8,7 +8,7 @@ import java.util.*;
 
 public class User {
     private String userID;
-    private List<Item> bag = new ArrayList<>();
+    private List<Item> bag = new ArrayList<Item>();
     private Location currentLocation;
 
     public User() {
@@ -39,7 +39,7 @@ public class User {
     }
 
     public List<String> listBagItems(){
-        List<String> bagItems = new ArrayList<>();
+        List<String> bagItems = new ArrayList<String>();
         for(Item item: bag){
             bagItems.add(item.getItemName());
         }

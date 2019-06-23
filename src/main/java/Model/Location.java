@@ -7,8 +7,8 @@ import java.util.*;
 
 public class Location {
     private String locationName;
-    private HashMap<Integer,Location> neighbors = new HashMap<>();
-    private List<Item> items = new ArrayList<>();
+    private HashMap<Integer,Location> neighbors = new HashMap<Integer, Location>();
+    private List<Item> items = new ArrayList<Item>();
     private String locationID;
 
     public Location() {
@@ -41,7 +41,7 @@ public class Location {
     }
 
     public List<String> getIemsName(){
-        List<String> itemnames = new ArrayList<>();
+        List<String> itemnames = new ArrayList<String>();
 
         for(int i = 0; i < items.size();i++){
             itemnames.add(items.get(i).getItemName());
@@ -72,7 +72,7 @@ public class Location {
     }
 
     public void initialLocation(){
-        List<Integer> arrowAngles = new LinkedList<>();
+        List<Integer> arrowAngles = new LinkedList<Integer>();
         Set<Map.Entry<Integer, Location>> eSet = getNeighbors().entrySet();
         Iterator<Map.Entry<Integer, Location>> it = eSet.iterator();
         while (it.hasNext()){

@@ -5,6 +5,9 @@ import Model.Location;
 import Model.User;
 import Model.World;
 import Utils.ReadJSON;
+
+import java.net.URISyntaxException;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -38,7 +41,6 @@ public class LoadGame {
 
         for(int i = 0; i < locationArray.size(); i++) {
             String locationID = locationArray.get(i).getAsJsonObject().get("id").getAsString();
-
             if(World.getWorld().getLocationByID(locationID) == null) {
                 Location location = new Location();
                 this.buildLocation(location, locationArray.get(i).getAsJsonObject());

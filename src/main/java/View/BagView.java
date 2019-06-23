@@ -54,7 +54,6 @@ public class BagView {
 		  this.itemspage = viewcontroller.getItemsPage();
 		  this.imageView = viewcontroller.getImageView();
 		  close.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
 			public void handle(ActionEvent event) {
 				bagView.setVisible(false);
 			}
@@ -78,12 +77,12 @@ public class BagView {
 		return bagview;
 	}
 
-	public void updateBag(List<Item> bag) {
+	public void updateBag(final List<Item> bag) {
 		System.out.println(bag.size());
 		inBag.getChildren().clear();
 		int r = 0;
 		int c = 0;
-		List<String> bagItems = new LinkedList<>();
+		List<String> bagItems = new LinkedList<String>();
 		for (Item item: bag){
 			bagItems.add(item.getItemName());
 		}
@@ -109,11 +108,11 @@ public class BagView {
 				item.setBottom(item_num);
 
 				//create ImageView to each of the items
-				ImageView item_img = new ImageView();
+				final ImageView item_img = new ImageView();
 				URL url = this.getClass().getResource("/images/" + tmp_name + ".png");
-				Image image = new Image(url.toString(), image_h, image_w, false, false);
+				final Image image = new Image(url.toString(), image_h, image_w, false, false);
 				//final String style = "-fx-background-color:  #ffffff";
-				GaussianBlur effect = new GaussianBlur();
+				final GaussianBlur effect = new GaussianBlur();
 				item_img.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 					public void handle(MouseEvent arg0) {
@@ -139,7 +138,6 @@ public class BagView {
 				});
 				confirm.setOnAction(new EventHandler<ActionEvent>() {
 					Item item_bag = null;
-					@Override
 					public void handle(ActionEvent event) {
 
 						if(item_img.getEffect() == effect){
@@ -151,13 +149,12 @@ public class BagView {
 								}
 							}
 							System.out.println(item_bag.getItemPositionX());
-							ImageView item_location = new ImageView();
+							final ImageView item_location = new ImageView();
 							item_location.setImage(image);
 							if(item_bag.getItemPositionX()==-1.0 && item_bag.getItemPositionY()==-1.0){
 								bagView.setVisible(false);
 								imageView.setEffect(effect);
 								imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-									@Override
 									public void handle(MouseEvent event) {
 										//System.out.println(2323);
 										item_location.setLayoutX(event.getX());

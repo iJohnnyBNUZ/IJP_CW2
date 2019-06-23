@@ -48,7 +48,6 @@ public class LocationView {
         this.itemspage = viewcontroller.getItemsPage();
         this.bagView = viewcontroller.getBagView();
         menu_bag.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
             public void handle(ActionEvent event) {
                 bagView.setVisible(true);
             }
@@ -97,7 +96,7 @@ public class LocationView {
     }
 
 
-    public void addArrows(Integer arrowAngle){
+    public void addArrows(final Integer arrowAngle){
         Button button = new Button("←");
         button.setPrefWidth(60);
         button.setRotate(arrowAngle);
