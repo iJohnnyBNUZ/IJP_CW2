@@ -64,9 +64,8 @@ public class Location {
     }
 
     public Location getLocationAtAngle(int angle){
-        int i = angle/60;
-        if(neighbors.containsKey(i)){
-            return neighbors.get(i);
+        if(neighbors.containsKey(angle)){
+            return neighbors.get(angle);
         }else{
             return null;
         }
