@@ -10,5 +10,6 @@ public class LocationController {
         User user = World.getWorld().getAllUsers().get(0);
         user.moveInDirection(arrowAngle);
         user.getCurrentLocation().initialLocation();
+        user.getCurrentLocation().initialItems();
     }
 }

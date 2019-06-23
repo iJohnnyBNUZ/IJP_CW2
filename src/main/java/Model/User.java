@@ -47,14 +47,16 @@ public class User {
     }
 
     public void addItem(Item item){
+
         bag.add(item);
+        currentLocation.removeItem(item);
     }
 
     public void removeItem(Item item){
-        currentLocation.removeItem(item);
-        bag.remove(item);
 
-        BagView.getBagView().updateBag(listBagItems());
+        bag.remove(item);
+        currentLocation.addItem(item);
+        //BagView.getBagView().updateBag(listBagItems());
     }
 
     public void moveInDirection(int angle){
@@ -79,6 +81,6 @@ public class User {
         for (Item item: bag){
             bagItems.add(item.getItemName());
         }
-        BagView.getBagView().updateBag(bagItems);
+        //BagView.getBagView().updateBag(bagItems);
     }
 }

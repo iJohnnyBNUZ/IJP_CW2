@@ -3,6 +3,7 @@ package View;
 import java.net.URL;
 import java.util.List;
 
+import Controller.ViewController;
 import Model.Item;
 import Controller.ItemsController;
 import javafx.event.EventHandler;
@@ -20,38 +21,23 @@ import javafx.scene.layout.AnchorPane;
  * @version 1.0;
  */
 public class ItemView {
-	private AnchorPane page; 
 	
     private static volatile ItemView itemView = null;
-    private ItemsController controller =null;
-    
-    private LocationView locationView;
+    private ViewController viewcontroller = null;
+    private ItemsController itemscontroller = null;
+    private AnchorPane page;
 
-
-    public ItemView(LocationView locationView) {
-    	this.page = locationView.getPage();
-    }
-
-	//band ItemsController with ItemView.
-    public ItemView(ItemsController controller){
-    	this.controller=controller;
-		if (locationView != null) {
-			this.page = locationView.getPage();
-		}
+    public ItemView(ViewController viewcontroller){
+    	this.viewcontroller = viewcontroller;
+    	this.itemscontroller = viewcontroller.getItemsController();
+    	this.page = viewcontroller.getItemsPage();
 	}
 
-    public ItemsController getController() {
-		return controller;
-	}
-
-	public void setController(ItemsController controller) {
-		this.controller = controller;
-	}
     
     public static ItemView getItemView(){
         synchronized (ItemView.class){
             if(itemView == null){
-                itemView = new ItemView(new ItemsController());
+                itemView = new ItemView(ViewController.getViewController());
             }
         }
 
@@ -65,18 +51,18 @@ public class ItemView {
 	 */
     public void updateItems(List<Item> items) {
     	 if(items!=null) {
+             //page.getChildren().clear();
     		 for(int i=0;i<items.size();i++) {	 
     			final Item tmp = items.get(i);
     			 
     			 //create ImageView to each of the items
         		 ImageView item_v = new ImageView();
         		 item_v.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
 					public void handle(MouseEvent arg0) {
 						// TODO Auto-generated method stub
-						controller.pickUp(tmp);
+						itemscontroller.pickUp(tmp);
+						page.getChildren().remove(item_v);
 					}
-        			 
         		 });
         		 
         		 //create item's image.

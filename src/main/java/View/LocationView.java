@@ -25,21 +25,24 @@ import java.util.List;
 
 public class LocationView {
     private static volatile LocationView locationView = null;
-    private ViewController viewcontroller;
-    private LocationController locationcontroller;
+    private ViewController viewcontroller = null;
+    private LocationController locationcontroller = null;
     private double position_x, position_y;
 
     private ImageView imageView;
     private HBox buttonBox;
     private MenuItem menu_bag;
     private MenuItem menu_position;
+    private AnchorPane itemspage;
 
     public LocationView(ViewController viewcontroller){
         this.viewcontroller = viewcontroller;
-        imageView = viewcontroller.getImageView();
-        buttonBox = viewcontroller.getHBox();
-        menu_bag = viewcontroller.getMenuBag();
-        menu_position = viewcontroller.getMenuPosition();
+        this.locationcontroller = viewcontroller.getLocationController();
+        this.imageView = viewcontroller.getImageView();
+        this.buttonBox = viewcontroller.getHBox();
+        this.menu_bag = viewcontroller.getMenuBag();
+        this.menu_position = viewcontroller.getMenuPosition();
+        this.itemspage = viewcontroller.getItemsPage();
         menu_bag.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -52,7 +55,6 @@ public class LocationView {
 
             }
         });
-        locationcontroller = viewcontroller.getLocationController();
     }
 
     public void setViewController(ViewController controller){this.viewcontroller = controller;}
@@ -75,14 +77,14 @@ public class LocationView {
 
 
     public void updateLocation(String locationName, List<Integer> arrowAngles) {
-        File file = new File(getClass().getResource("/images/"+locationName+".JPG").getFile());
+         File file = new File(getClass().getResource("/images/"+locationName+".JPG").getFile());
          Image locationimage = new Image(file.toURI().toString());
          imageView.setImage(locationimage);
          int buttonbox_width = 60 * arrowAngles.size();
          buttonBox.setPrefWidth(buttonbox_width);
          buttonBox.getChildren().clear();
+         itemspage.getChildren().clear();
          for(int i=0; i<arrowAngles.size(); i++){
-             System.out.println(arrowAngles.get(i));
              addArrows(arrowAngles.get(i));
          }
     }

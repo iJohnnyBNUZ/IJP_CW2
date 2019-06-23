@@ -60,7 +60,7 @@ public class Location {
 
     public void removeItem(Item item){
         this.items.remove(item);
-        ItemView.getItemView().updateItems(getItems());
+        //ItemView.getItemView().updateItems(getItems());
     }
 
     public Location getLocationAtAngle(int angle){
@@ -80,9 +80,10 @@ public class Location {
         }
         World world = World.getWorld();
         LocationView.getLocationView().updateLocation(getLocationName(),arrowAngles );
+
     }
 
-    public void initItems() {
+    public void initialItems(){
         ItemView.getItemView().updateItems(this.items);
     }
 }

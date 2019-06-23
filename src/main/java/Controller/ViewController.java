@@ -11,8 +11,10 @@ import javafx.scene.layout.HBox;
 
 public class ViewController {
 
+    /*
     @FXML
     private AnchorPane page;
+    */
 
     @FXML
     private ImageView imageView;
@@ -25,6 +27,9 @@ public class ViewController {
 
     @FXML
     private MenuItem menu_position;
+
+    @FXML
+    private AnchorPane itemspage;
 
     private static volatile ViewController viewcontroller;
 
@@ -42,8 +47,8 @@ public class ViewController {
     }
 
 
-    public AnchorPane getAnchorPane(){
-        return page;
+    public AnchorPane getItemsPage(){
+        return itemspage;
     }
 
     public ImageView getImageView(){

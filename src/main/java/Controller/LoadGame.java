@@ -67,7 +67,7 @@ public class LoadGame {
 
         }
         World.getWorld().getAllUsers().get(0).getCurrentLocation().initialLocation();
-
+        World.getWorld().getAllUsers().get(0).getCurrentLocation().initialItems();
     }
 
     private void buildLocation(Location location, JsonObject locData) {
