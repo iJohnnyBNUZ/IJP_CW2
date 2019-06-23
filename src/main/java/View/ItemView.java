@@ -85,4 +85,32 @@ public class ItemView {
         	 }
     	 }
     }
+    
+    public void addNewItems(final Item item) {
+    	if(item!=null) {
+    		final ImageView item_v = new ImageView();
+    		item_v.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+				public void handle(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					itemscontroller.pickUp(item);
+					page.getChildren().remove(item_v);
+				}
+    			
+    		});
+    		
+    		//create item's image.
+    		URL url = this.getClass().getResource("/images/"+item.getItemName()+".png");
+       	    Image image = new Image(url.toString(),65.0,65.0,false,false); 
+  	        item_v.setImage(image);
+  	     
+  	        //set the item's position.
+  	        item_v.setLayoutX(0);
+  		    item_v.setLayoutY(0);
+  		 
+	  		//add each ImageView to the interface
+	  	    page.getChildren().add(item_v);
+    	}
+    }
+   
 }

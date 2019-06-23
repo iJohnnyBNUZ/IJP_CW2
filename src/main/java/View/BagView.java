@@ -57,6 +57,15 @@ public class BagView {
 			public void handle(ActionEvent event) {
 				bagView.setVisible(false);
 			}
+		  });  
+		  confirm.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				bagcontroller.addToLocation();
+				bagView.setVisible(true);
+			}
+			  
 		  });
 	}
 
@@ -113,12 +122,14 @@ public class BagView {
 				final Image image = new Image(url.toString(), image_h, image_w, false, false);
 				//final String style = "-fx-background-color:  #ffffff";
 				final GaussianBlur effect = new GaussianBlur();
+				
+				//set image on-click effect
 				item_img.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 					public void handle(MouseEvent arg0) {
 
-						/*
 						// TODO Auto-generated method stub
+						/*
 						if (item.getStyle() == style) {
 							item.setStyle("");
 							bagcontroller.unselect(tmp_name);
@@ -128,14 +139,22 @@ public class BagView {
 						*/
 						if(item_img.getEffect() == effect){
 							item_img.setEffect(null);
+							bagcontroller.unselect();
 						}
 						else{
 							item_img.setEffect(effect);
+							for(int i=0; i<bag.size();i++){
+								if(bag.get(i).getItemName()==tmp_name){
+									bagcontroller.select(bag.get(i));
+									break;
+								}
+							}
 						}
-						//bagcontroller.select(tmp_name);
 					}
 
 				});
+				
+				/*
 				confirm.setOnAction(new EventHandler<ActionEvent>() {
 					Item item_bag = null;
 					public void handle(ActionEvent event) {
@@ -172,7 +191,7 @@ public class BagView {
 
 						}
 					}
-				});
+				});*/
 
 
 				//create item's image.
