@@ -55,6 +55,7 @@ public class BagView {
 		  this.imageView = viewcontroller.getImageView();
 		  close.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
+				cleanSelect();
 				bagView.setVisible(false);
 			}
 		  });  
@@ -62,6 +63,7 @@ public class BagView {
 
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
+				cleanSelect();
 				bagcontroller.showChoice();
 				bagView.setVisible(false);
 			}
@@ -129,19 +131,13 @@ public class BagView {
 					public void handle(MouseEvent arg0) {
 
 						// TODO Auto-generated method stub
-						/*
-						if (item.getStyle() == style) {
-							item.setStyle("");
-							bagcontroller.unselect(tmp_name);
-						} else {
-							item.setStyle(style);
-						}
-						*/
+						
 						if(item_img.getEffect() == effect){
 							item_img.setEffect(null);
 							bagcontroller.unselect();
 						}
 						else{
+							cleanSelect();
 							item_img.setEffect(effect);
 							for(int i=0; i<bag.size();i++){
 								if(bag.get(i).getItemName()==tmp_name){
@@ -151,6 +147,8 @@ public class BagView {
 							}
 						}
 					}
+
+					
 
 				});
 				
@@ -173,157 +171,14 @@ public class BagView {
 		}
 	}
 
-	/*
-	
-	@FXML
-	private GridPane InBag; 
-	
-	@FXML
-	private TitledPane bagView; 
-	
-	@FXML 
-	private Button confirm;
-	
-	@FXML
-	private Button close;
-	
-    private static volatile BagView bagView_instance = null;
-    private BagController controller = null;
-    private double image_h = 50.0;
-    private double image_w =50.0;
-    private int row=3;
-    private int column=3;
-    
 
-    
-    public void injectMainController(LocationView locationView) {
+	private void cleanSelect() {
 		// TODO Auto-generated method stub
-    	this.locationView = locationView;
-		
+		int size =inBag.getChildren().size();
+		for(int i=0; i<size; i++){	
+			BorderPane item = (BorderPane) inBag.getChildren().get(i);
+			if(item.getCenter().getEffect()!=null)
+				item.getCenter().setEffect(null);
+		}
 	}
-
-	*/
-
-
-    
-    /**for test the update bag method
-     * after the controller is finished, this method can be removed
-     * */
-
-    /*
-    public void initialize() {
-    	
-    	List<String> tmp = new ArrayList<String>();
-    	tmp.add("apple");
-    	tmp.add("apple");
-    	tmp.add("lemon");
-    	tmp.add("orange");
-    	updateBag(tmp);
-    	bagView.setVisible(false);
-    }
-
-    public static BagView getBagView(){
-        synchronized (BagView.class){
-            if(bagView_instance == null){
-            	bagView_instance = new BagView();
-            }
-        }
-
-        return bagView_instance;
-    }
-
-    public BagController getController() {
-		return controller;
-	}
-
-	public void setController(BagController controller) {
-		this.controller = controller;
-	}
-
-	public void updateBag(List<String> bagItems) {
-		InBag.getChildren().clear();
-		int r=0;
-		int c=0;
-		
-		if(bagItems!=null) {
-			//convert the list to set.
-			Set<String> uniqueSet = new HashSet<String>(bagItems);
-			for (final String tmp_name : uniqueSet) {
-				
-				if(r>row-1) {
-					System.out.println("ERROR");
-					break;
-				}
-				
-				
-				//create border pane for each item
-				final BorderPane item = new BorderPane();
-				
-				//create label to show the number of item
-				Label item_num = new Label(""+Collections.frequency(bagItems, tmp_name));
-				
-				item.setBottom(item_num);
-				
-				//create ImageView to each of the items
-	       		ImageView item_img = new ImageView();
-	       		final String style = "-fx-background-color:  #ffffff";
-	       		item_img.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
-					public void handle(MouseEvent arg0) {
-						// TODO Auto-generated method stub
-						if(item.getStyle()==style) {
-							item.setStyle("");
-							controller.unselect(tmp_name);
-						}else {
-							item.setStyle(style);
-						}
-							
-						
-						controller.select(tmp_name);
-					}
-					
-       			 });
-	       		 
-	       		 //create item's image.
-	       		 URL url = this.getClass().getResource("/images/"+tmp_name+".png");
-	             Image image = new Image(url.toString(),image_h,image_w,false,false); 
-	             item_img.setImage(image);
-	       	     
-	       	     item.setCenter(item_img);
-	       	     //set the item's position.
-	       	     InBag.add(item, c, r);
-	       	     if(c<column-1) {
-	       	    	 c++;
-	       	     }else {
-	       	    	 c=0;
-	       	    	 r++;
-	       	     }
-				
-			}
-			
-   		 //show the bag on the interface
-   	     bagView.setVisible(true);
-   	     
-   	 }
-		
-    }
-    
-    public void putDown(ActionEvent event) {
-    	controller.removeFromBag();
-		bagView.setVisible(false);
-	}
-    
-	public void disappear(ActionEvent event) {
-		bagView.setVisible(false);
-		
-	}
-
-	public void showBag() {
-		// TODO Auto-generated method stub
-		bagView.setVisible(true);
-		
-		
-	}
-
-	*/
 }
