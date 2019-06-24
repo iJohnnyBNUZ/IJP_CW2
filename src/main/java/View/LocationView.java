@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TitledPane;
@@ -22,6 +23,7 @@ import javafx.scene.layout.HBox;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class LocationView {
@@ -123,6 +125,8 @@ public class LocationView {
 		// TODO Auto-generated method stub
 		imageView.setEffect(effect);
 		
+		disableItems();
+		
 		itemspage.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			public void handle(MouseEvent m) {
@@ -132,10 +136,31 @@ public class LocationView {
 				position.add(position_x);
 		    	position.add(position_y);
 		    	bagcontroller.addToLocation(position);
+		    	ableItems();
 			}
+
 		});
 	}
 
+	private void disableItems() {
+		// TODO Auto-generated method stub
+		int size =itemspage.getChildren().size();
+		
+		for(int i=0; i<size; i++){
+			itemspage.getChildren().get(i).setMouseTransparent(true);
+			
+		}
+	}
+
+	private void ableItems() {
+		// TODO Auto-generated method stub
+		int size =itemspage.getChildren().size();
+		
+		for(int i=0; i<size; i++){
+			itemspage.getChildren().get(i).setMouseTransparent(false);
+			
+		}
+	}
 	public void removeChoice() {
 		// TODO Auto-generated method stub
 		imageView.setEffect(null);
