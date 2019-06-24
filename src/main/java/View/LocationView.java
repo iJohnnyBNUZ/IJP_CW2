@@ -21,13 +21,14 @@ import javafx.scene.layout.HBox;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LocationView {
     private static volatile LocationView locationView = null;
     private ViewController viewcontroller = null;
     private LocationController locationcontroller = null;
-    //private BagController bagcontroller = null;
+    private BagController bagcontroller = null;
     private double position_x, position_y;
 
     private ImageView imageView;
@@ -40,7 +41,7 @@ public class LocationView {
     public LocationView(ViewController viewcontroller){
         this.viewcontroller = viewcontroller;
         this.locationcontroller = viewcontroller.getLocationController();
-        //this.bagcontroller = viewcontroller.getBagController();
+        this.bagcontroller = viewcontroller.getBagController();
         this.imageView = viewcontroller.getImageView();
         this.buttonBox = viewcontroller.getHBox();
         this.menu_bag = viewcontroller.getMenuBag();
@@ -112,6 +113,36 @@ public class LocationView {
 
 
     }
+    
+
+	public void showChoice() {
+		final List<Double> position = new ArrayList<Double>();
+		final GaussianBlur effect = new GaussianBlur();
+		
+		
+		// TODO Auto-generated method stub
+		imageView.setEffect(effect);
+		
+		itemspage.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			public void handle(MouseEvent m) {
+				// TODO Auto-generated method stub
+				position_x = m.getX();
+				position_y = m.getY();
+				position.add(position_x);
+		    	position.add(position_y);
+		    	bagcontroller.addToLocation(position);
+			}
+		});
+	}
+
+	public void removeChoice() {
+		// TODO Auto-generated method stub
+		imageView.setEffect(null);
+		itemspage.setOnMouseClicked(null);
+	}
+    
+    
 
 
     

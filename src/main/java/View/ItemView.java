@@ -26,6 +26,8 @@ public class ItemView {
     private ViewController viewcontroller = null;
     private ItemsController itemscontroller = null;
     private AnchorPane page;
+	private double image_h = 60.0;
+	private double image_w =60.0;
 
     public ItemView(ViewController viewcontroller){
     	this.viewcontroller = viewcontroller;
@@ -57,7 +59,7 @@ public class ItemView {
 	 */
     public void updateItems(List<Item> items) {
     	 if(items!=null) {
-    		 for(int i=0;i<items.size();i++) {	 
+    		 for(int i=0;i<items.size();i++) {
     			final Item tmp = items.get(i);
     			 
     			 //create ImageView to each of the items
@@ -72,7 +74,7 @@ public class ItemView {
         		 
         		 //create item's image.
         		 URL url = this.getClass().getResource("/images/"+tmp.getItemName()+".png");
-             	 Image image = new Image(url.toString(),65.0,65.0,false,false); 
+             	 Image image = new Image(url.toString(),image_h,image_w,false,false); 
         	     item_v.setImage(image);
         	     
         	     //set the item's position.
@@ -86,27 +88,28 @@ public class ItemView {
     	 }
     }
     
-    public void addNewItems(final Item item) {
+    public void addNewItems(Item item) {
     	if(item!=null) {
+    		final Item tmp = item;
     		final ImageView item_v = new ImageView();
     		item_v.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 				public void handle(MouseEvent arg0) {
 					// TODO Auto-generated method stub
-					itemscontroller.pickUp(item);
+					itemscontroller.pickUp(tmp);
 					page.getChildren().remove(item_v);
 				}
     			
     		});
     		
     		//create item's image.
-    		URL url = this.getClass().getResource("/images/"+item.getItemName()+".png");
-       	    Image image = new Image(url.toString(),65.0,65.0,false,false); 
+    		URL url = this.getClass().getResource("/images/"+tmp.getItemName()+".png");
+       	    Image image = new Image(url.toString(),image_h,image_w,false,false); 
   	        item_v.setImage(image);
   	     
   	        //set the item's position.
-  	        item_v.setLayoutX(0);
-  		    item_v.setLayoutY(0);
+  	        item_v.setLayoutX(tmp.getItemPositionX()-image_h/2);
+  		    item_v.setLayoutY(tmp.getItemPositionY()-image_w/2);
   		 
 	  		//add each ImageView to the interface
 	  	    page.getChildren().add(item_v);

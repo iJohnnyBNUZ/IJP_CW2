@@ -1,9 +1,13 @@
 package Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Model.Item;
 import Model.User;
 import Model.World;
 import View.ItemView;
+import View.LocationView;
 
 public class BagController {
 	private Item selected;
@@ -31,15 +35,26 @@ public class BagController {
 	}
 	*/
 	
-	public void addToLocation() {
+	public void showChoice() {
 		if(this.selected==null) {
 			System.out.println("User selected nothing");
 		}else {
-			ItemView.getItemView().addNewItems(this.selected);
-			removeFromBag(this.selected);
+			LocationView.getLocationView().showChoice();
+			System.out.println("Show choice interface.");
+			
+			
 		}
 		
 	}
 	
+	public void addToLocation(List<Double> position) {
+		LocationView.getLocationView().removeChoice();
+		this.selected.setPosition(position.get(0), position.get(1));
+		System.out.println("Get position.");
+		ItemView.getItemView().addNewItems(this.selected);
+		System.out.println("add new items on the interface.");
+		removeFromBag(this.selected);
+	}
 
+	
 }

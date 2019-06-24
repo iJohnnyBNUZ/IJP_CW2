@@ -48,7 +48,7 @@
                <children>
                   <Button fx:id="confirm" layoutX="50.0" layoutY="210.0" mnemonicParsing="false" text="Confirm" />
                   <Button fx:id="close" layoutX="150.0" layoutY="210.0" mnemonicParsing="false" text="Close" />
-                  <GridPane fx:id="inBag" prefHeight="202.0" prefWidth="258.0">
+                  <GridPane fx:id="inBag" prefHeight="202.0" prefWidth="258.0" AnchorPane.bottomAnchor="40.79999999999998" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

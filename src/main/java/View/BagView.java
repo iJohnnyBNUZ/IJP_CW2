@@ -62,8 +62,8 @@ public class BagView {
 
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				bagcontroller.addToLocation();
-				bagView.setVisible(true);
+				bagcontroller.showChoice();
+				bagView.setVisible(false);
 			}
 			  
 		  });
@@ -154,45 +154,6 @@ public class BagView {
 
 				});
 				
-				/*
-				confirm.setOnAction(new EventHandler<ActionEvent>() {
-					Item item_bag = null;
-					public void handle(ActionEvent event) {
-
-						if(item_img.getEffect() == effect){
-							for(int i=0; i<bag.size();i++){
-								if(bag.get(i).getItemName()==tmp_name){
-									item_bag = bag.get(i);
-									System.out.println(tmp_name);
-									break;
-								}
-							}
-							System.out.println(item_bag.getItemPositionX());
-							final ImageView item_location = new ImageView();
-							item_location.setImage(image);
-							if(item_bag.getItemPositionX()==-1.0 && item_bag.getItemPositionY()==-1.0){
-								bagView.setVisible(false);
-								imageView.setEffect(effect);
-								imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-									public void handle(MouseEvent event) {
-										//System.out.println(2323);
-										item_location.setLayoutX(event.getX());
-										item_location.setLayoutY(event.getY());
-										item_bag.setPosition(event.getX(),event.getY());
-									}
-								});
-								imageView.setEffect(null);
-								item_location.setLayoutX(0);
-								item_location.setLayoutY(0);
-								itemspage.getChildren().add(item_location);
-								System.out.println(item_bag);
-								bagcontroller.removeFromBag(item_bag);
-							}
-
-						}
-					}
-				});*/
-
 
 				//create item's image.
 				item_img.setImage(image);
@@ -208,9 +169,6 @@ public class BagView {
 				}
 
 			}
-
-			//show the bag on the interface
-			//bagView.setVisible(true);
 
 		}
 	}
