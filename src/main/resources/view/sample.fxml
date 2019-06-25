@@ -29,6 +29,11 @@
                         <MenuItem fx:id="menu_bag" mnemonicParsing="false" text="Open the bag" />
                     </items>
                 </Menu>
+            <Menu fx:id="save" mnemonicParsing="false" onAction="#save" text="Save">
+               <items>
+                  <MenuItem fx:id="saveGame" mnemonicParsing="false" onAction="#save" text="Save Game" />
+               </items>
+            </Menu>
                 <!--
                 <Menu mnemonicParsing="false" text="ItemPosition">
                     <items>

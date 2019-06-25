@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.World;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,8 +28,11 @@ public class ViewController {
 
     @FXML
     private MenuItem menu_bag;
+    
 
-    @FXML
+   
+
+	@FXML
     private MenuItem menu_position;
 
     @FXML
@@ -52,6 +56,7 @@ public class ViewController {
     private LocationController locationcontroller = null;
     private ItemsController itemscontroller = null;
     private BagController bagcontroller = null;
+    private SaveGame saveGame= null;
 
 
     public static void setViewController(ViewController controller){
@@ -79,6 +84,7 @@ public class ViewController {
         return menu_bag;
     }
 
+    
     public MenuItem getMenuPosition(){
         return menu_position;
     }
@@ -115,7 +121,21 @@ public class ViewController {
         return bagcontroller;
     }
 
+    
 
+    public SaveGame getSaveGame() {
+		return saveGame;
+	}
+
+	public void setSaveGame(SaveGame saveGame) {
+		this.saveGame = saveGame;
+	}
+
+	public void save() {
+		saveGame.saveUser(World.getWorld().getAllUsers().get(0).getUserID());
+		saveGame.saveWorld();
+    	System.out.println("Save Game");
+    }
 
 
 }
