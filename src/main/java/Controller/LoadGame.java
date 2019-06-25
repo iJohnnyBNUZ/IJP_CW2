@@ -98,7 +98,7 @@ public class LoadGame {
 
     private void buildItem(Item item, JsonObject itemData) {
         item.setItemID(itemData.get("id").getAsString());
-        item.setItemName(itemData.get("name").getAsString());
+        item.setItemName(itemData.get("filePath").getAsString());
         Double x = itemData.get("positionX").getAsDouble();
         Double y = itemData.get("positionY").getAsDouble();
         item.setPosition(x, y);
