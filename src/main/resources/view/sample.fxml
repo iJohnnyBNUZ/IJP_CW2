@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewController">
+<AnchorPane fx:id="page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewController">
     <children>
         <MenuBar layoutY="1.0" prefHeight="22.0" prefWidth="600.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
             <menus>
@@ -46,7 +46,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="confirm" layoutX="50.0" layoutY="210.0" mnemonicParsing="false" text="Confirm" />
+                  <Button fx:id="putDown" layoutX="50.0" layoutY="210.0" mnemonicParsing="false" text="Put Down" />
                   <Button fx:id="close" layoutX="150.0" layoutY="210.0" mnemonicParsing="false" text="Close" />
                   <GridPane fx:id="inBag" prefHeight="202.0" prefWidth="258.0" AnchorPane.bottomAnchor="40.79999999999998" AnchorPane.topAnchor="0.0">
                     <columnConstraints>

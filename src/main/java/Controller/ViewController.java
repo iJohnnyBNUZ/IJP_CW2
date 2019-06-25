@@ -41,7 +41,7 @@ public class ViewController {
     private TitledPane bagView;
 
     @FXML
-    private Button confirm;
+    private Button putDown;
 
     @FXML
     private Button close;
@@ -87,7 +87,7 @@ public class ViewController {
 
     public TitledPane getBagView(){ return bagView; }
 
-    public Button getConfirm(){ return confirm; }
+    public Button getPutDown(){ return putDown; }
 
     public Button getClose(){ return close; }
 

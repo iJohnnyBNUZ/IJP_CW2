@@ -34,7 +34,7 @@ public class BagView {
 	private ViewController viewcontroller = null;
 	private BagController bagcontroller = null;
 	private GridPane inBag;
-	private Button confirm;
+	private Button putDown;
 	private Button close;
 	private int row=3;
 	private int column=3;
@@ -49,7 +49,7 @@ public class BagView {
           this.bagcontroller = viewcontroller.getBagController();
           this.inBag = viewcontroller.getInBag();
 		  this.bagView = viewcontroller.getBagView();
-		  this.confirm = viewcontroller.getConfirm();
+		  this.putDown = viewcontroller.getPutDown();
 		  this.close = viewcontroller.getClose();
 		  this.itemspage = viewcontroller.getItemsPage();
 		  this.imageView = viewcontroller.getImageView();
@@ -59,7 +59,7 @@ public class BagView {
 				bagView.setVisible(false);
 			}
 		  });  
-		  confirm.setOnAction(new EventHandler<ActionEvent>() {
+		  putDown.setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub

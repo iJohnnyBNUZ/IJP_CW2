@@ -20,21 +20,21 @@
     "items": [
       {
         "id": "apple0",
-        "name": "Apple",
+        "name": "apple",
         "filePath": "apple",
         "positionX": 200,
         "positionY": 200
       },
       {
         "id": "apple1",
-        "name": "Apple",
+        "name": "apple",
         "filePath": "apple",
         "positionX": 150,
         "positionY": 50
       },
       {
         "id": "apple2",
-        "name": "Apple",
+        "name": "apple",
         "filePath": "apple",
         "positionX": 350,
         "positionY": 250
@@ -62,7 +62,7 @@
     "items": [
       {
         "id": "apple4",
-        "name": "Apple",
+        "name": "apple",
         "filePath": "apple",
         "positionX": 300,
         "positionY": 300
