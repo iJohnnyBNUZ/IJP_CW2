@@ -12,7 +12,7 @@ public class SaveGame {
     private String userSave;
     private String worldSave;
 
-    private SaveGame(String userSave, String worldSave) {
+    public SaveGame(String userSave, String worldSave) {
         this.userSave = userSave;
         this.worldSave = worldSave;
     }

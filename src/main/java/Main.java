@@ -1,11 +1,15 @@
 import Controller.*;
+import Model.World;
 import javafx.application.Application;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.net.URL;
 
@@ -41,13 +45,25 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         Scene scene = new Scene(root, 600, 500);
         primaryStage.setScene(scene);
-        ViewController viewcontroller = (ViewController) fxmlLoader.getController();
+        final ViewController viewcontroller = (ViewController) fxmlLoader.getController();
         //bandView(controller,locationController,itemController,bagController);
         ViewController.setViewController(viewcontroller);
         LoadGame lg = new LoadGame("config/User.json", "config/Location.json");
+        SaveGame sg = new SaveGame("config/User.json", "config/Location.json");
         lg.Initialise(viewcontroller);
+        viewcontroller.setSaveGame(sg);
         primaryStage.show();
         System.out.println("Finished Loading");
+        
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+
+			public void handle(WindowEvent event) {
+				// TODO Auto-generated method stub
+				viewcontroller.save();
+				System.out.println("Close and save!");
+			}
+        	
+        });
     }
 
 
