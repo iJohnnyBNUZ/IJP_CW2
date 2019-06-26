@@ -35,8 +35,9 @@ public class LoadGame {
         this.loadUser();
     }
 
-    public void loadWorld() {
-        String locationSaveString = ReadJSON.getJSON(getClass().getResource("/" + worldSave).getFile());
+    private void loadWorld() {
+        String locationSaveString = ReadJSON.getJSON(worldSave);
+        System.out.println(locationSaveString);
         JsonArray locationArray = new JsonParser().parse(locationSaveString).getAsJsonArray();
 
         for(int i = 0; i < locationArray.size(); i++) {
@@ -52,8 +53,8 @@ public class LoadGame {
         }
     }
 
-    public void loadUser() {
-        String userSaveString = ReadJSON.getJSON(getClass().getResource("/" + userSave).getFile());
+    private void loadUser() {
+        String userSaveString = ReadJSON.getJSON(userSave);
         JsonArray userArray = new JsonParser().parse(userSaveString).getAsJsonArray();
         for(int i = 0; i < userArray.size(); i++) {
             User user = new User();

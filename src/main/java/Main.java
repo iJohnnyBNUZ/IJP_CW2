@@ -48,7 +48,7 @@ public class Main extends Application {
         final ViewController viewcontroller = (ViewController) fxmlLoader.getController();
         //bandView(controller,locationController,itemController,bagController);
         ViewController.setViewController(viewcontroller);
-        LoadGame lg = new LoadGame("config/User.json", "config/Location.json");
+        LoadGame lg = new LoadGame("User.json", "Location.json");
         SaveGame sg = new SaveGame("config/User.json", "config/Location.json");
         lg.Initialise(viewcontroller);
         viewcontroller.setSaveGame(sg);

@@ -4,6 +4,7 @@ import Model.Item;
 import Model.Location;
 import Model.User;
 import Model.World;
+import Utils.ReadJSON;
 
 import java.util.List;
 import java.util.Map;
@@ -17,61 +18,68 @@ public class SaveGame {
         this.worldSave = worldSave;
     }
 
-    public void saveUser(String userID) {
-        String saveData = "[";
+    void saveUser(String userID) {
+        StringBuilder saveData = new StringBuilder("[\n");
         List<User> users = World.getWorld().getAllUsers();
         for(User user : users) {
-            saveData += "\t{ \"player_0\":\n";
-            saveData += "\t\t{\n";
-            saveData += "\t\t\t\"id\": \"" + user.getUserID() + "\",\n";
-            saveData += "\t\t\t\"name\": \"" + user.getUserID() + "\",\n";
-            saveData += "\t\t\t\"currentLocation\": \"" + user.getCurrentLocation() + "\",\n";
-            saveData += "\t\t\t\"items\": [\n";
+            saveData.append("\t{ \"player_0\":\n");
+            saveData.append("\t\t{\n");
+            saveData.append("\t\t\t\"id\": \"").append(user.getUserID()).append("\",\n");
+            saveData.append("\t\t\t\"name\": \"").append(user.getUserID()).append("\",\n");
+            saveData.append("\t\t\t\"currentLocation\": \"").append(user.getCurrentLocation().getLocationID()).append("\",\n");
+            saveData.append("\t\t\t\"items\": [\n");
             if(user.getBag().size() != 0) {
                 for(Item item : user.getBag()) {
-                    saveData += this.saveItem(item);
+                    saveData.append(this.saveItem(item));
                 }
             }
-            saveData += "\t\t\t]";
+	        if(saveData.charAt(saveData.length() - 2) == ',')
+		        saveData = new StringBuilder(saveData.substring(0, saveData.length() - 2));
+            saveData.append("\n\t\t\t]\n");
+            saveData.append("\t\t}\n");
+            saveData.append("\t}\n");
         }
+        saveData.append("]");
+        ReadJSON.writeJSON("User.json", saveData.toString());
     }
 
-    public void saveWorld() {
-        String saveData = "[";
+    void saveWorld() {
+        StringBuilder saveData = new StringBuilder("[\n");
         List<Location> locations = World.getWorld().getAllLocations();
         for(Location location : locations) {
-            saveData += "\n\t{\n\t\t\"id\": \"" + location.getLocationID() + "\",\n\t\t";
-            saveData += "\"name\": \"" + location.getLocationName() + "\",\n\t\t";
-            saveData += "\"filePath\": \"" + location.getLocationName() + "\",\n\t\t";
-            saveData += "\"neighbors\": [\n";
+            saveData.append("\t{\n\t\t\"id\": \"").append(location.getLocationID()).append("\",\n");
+            saveData.append("\t\t\"name\": \"").append(location.getLocationName()).append("\",\n");
+            saveData.append("\t\t\"filePath\": \"").append(location.getLocationName()).append("\",\n");
+            saveData.append("\t\t\"neighbors\": [\n");
             for (Map.Entry<Integer, Location> neighbor: location.getNeighbors().entrySet()) {
-                saveData += "\t\t\t{\n\t\t\t\t";
-                saveData += "\"id\": \"" + neighbor.getValue().getLocationID() + "\",\n\t\t\t\t";
-                saveData += "\"angle\": " + neighbor.getKey() + "\n\t\t\t},";
+                saveData.append("\t\t\t{\n");
+                saveData.append("\t\t\t\t\"id\": \"").append(neighbor.getValue().getLocationID()).append("\",\n");
+                saveData.append("\t\t\t\t\"angle\": ").append(neighbor.getKey()).append("\n\t\t\t},\n");
             }
-            saveData += "\t\t],\n\t\t";
-            saveData += "\"items\": [\n";
+	        saveData = new StringBuilder(saveData.substring(0, saveData.length() - 2));
+            saveData.append("\n\t\t],\n");
+            saveData.append("\t\t\"items\": [\n");
             for (Item item : location.getItems()) {
-                saveData += this.saveItem(item);
+                saveData.append(this.saveItem(item));
             }
-            saveData += "\t\t]\t},";
+            if(saveData.charAt(saveData.length() - 2) == ',')
+	            saveData = new StringBuilder(saveData.substring(0, saveData.length() - 2));
+            saveData.append("\n\t\t]\n\t},\n");
         }
-        this.saveToFile(saveData);
+	    saveData = new StringBuilder(saveData.substring(0, saveData.length() - 2));
+        saveData.append("\n]");
+        ReadJSON.writeJSON("Location.json", saveData.toString());
     }
 
     private String saveItem(Item item) {
         String saveData = "";
-        saveData += "\t\t\t{";
+        saveData += "\t\t\t{\n";
         saveData += "\t\t\t\t\"id\": \"" + item.getItemID() + "\",\n";
         saveData += "\t\t\t\t\"name\": \"" + item.getItemName() + "\",\n";
         saveData += "\t\t\t\t\"filePath\": \"" + item.getItemName() + "\",\n";
-        saveData += "\t\t\t\t\"positionX\": \"" + item.getItemPositionX() + "\",\n";
-        saveData += "\t\t\t\t\"positionY\": \"" + item.getItemPositionY() + "\",\n";
+        saveData += "\t\t\t\t\"positionX\": " + item.getItemPositionX() + ",\n";
+        saveData += "\t\t\t\t\"positionY\": " + item.getItemPositionY() + "\n";
         saveData += "\t\t\t},\n";
         return saveData;
-    }
-
-    private void saveToFile(String saveData) {
-
     }
 }

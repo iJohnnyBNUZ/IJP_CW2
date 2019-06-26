@@ -1,0 +1,25 @@
+[
+	{ "player_0":
+		{
+			"id": "play0",
+			"name": "play0",
+			"currentLocation": "rec0",
+			"items": [
+			{
+				"id": "apple2",
+				"name": "apple",
+				"filePath": "apple",
+				"positionX": -1.0,
+				"positionY": -1.0
+			},
+			{
+				"id": "apple1",
+				"name": "apple",
+				"filePath": "apple",
+				"positionX": -1.0,
+				"positionY": -1.0
+			}
+			]
+		}
+	}
+]
