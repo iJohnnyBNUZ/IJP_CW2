@@ -3,17 +3,10 @@
 		{
 			"id": "play0",
 			"name": "play0",
-			"currentLocation": "rec0",
+			"currentLocation": "rec1",
 			"items": [
 			{
-				"id": "apple2",
-				"name": "apple",
-				"filePath": "apple",
-				"positionX": -1.0,
-				"positionY": -1.0
-			},
-			{
-				"id": "apple1",
+				"id": "apple4",
 				"name": "apple",
 				"filePath": "apple",
 				"positionX": -1.0,

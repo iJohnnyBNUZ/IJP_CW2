@@ -1,77 +1,5 @@
 [
 	{
-		"id": "rec2",
-		"name": "reception_180",
-		"filePath": "reception_180",
-		"neighbors": [
-			{
-				"id": "rec0",
-				"angle": 0
-			},
-			{
-				"id": "rec1",
-				"angle": 90
-			},
-			{
-				"id": "rec3",
-				"angle": 270
-			}
-		],
-		"items": [
-
-		]
-	},
-	{
-		"id": "rec1",
-		"name": "reception_90",
-		"filePath": "reception_90",
-		"neighbors": [
-			{
-				"id": "rec0",
-				"angle": 0
-			},
-			{
-				"id": "rec2",
-				"angle": 180
-			},
-			{
-				"id": "rec3",
-				"angle": 270
-			}
-		],
-		"items": [
-			{
-				"id": "apple4",
-				"name": "apple",
-				"filePath": "apple",
-				"positionX": 300.0,
-				"positionY": 300.0
-			}
-		]
-	},
-	{
-		"id": "rec3",
-		"name": "reception_270",
-		"filePath": "reception_270",
-		"neighbors": [
-			{
-				"id": "rec0",
-				"angle": 0
-			},
-			{
-				"id": "rec2",
-				"angle": 180
-			},
-			{
-				"id": "rec1",
-				"angle": 90
-			}
-		],
-		"items": [
-
-		]
-	},
-	{
 		"id": "rec0",
 		"name": "reception_0",
 		"filePath": "reception_0",
@@ -79,6 +7,10 @@
 			{
 				"id": "rec2",
 				"angle": 180
+			},
+			{
+				"id": "stair1",
+				"angle": 135
 			},
 			{
 				"id": "rec1",
@@ -103,6 +35,224 @@
 				"filePath": "lemon",
 				"positionX": 437.0,
 				"positionY": 140.0
+			}
+		]
+	},
+	{
+		"id": "rec1",
+		"name": "reception_90",
+		"filePath": "reception_90",
+		"neighbors": [
+			{
+				"id": "rec0",
+				"angle": 0
+			},
+			{
+				"id": "rec2",
+				"angle": 180
+			},
+			{
+				"id": "stair1",
+				"angle": 45
+			},
+			{
+				"id": "rec3",
+				"angle": 270
+			}
+		],
+		"items": [
+			{
+				"id": "apple1",
+				"name": "apple",
+				"filePath": "apple",
+				"positionX": 411.1111111111111,
+				"positionY": 222.8888888888889
+			}
+		]
+	},
+	{
+		"id": "rec3",
+		"name": "reception_270",
+		"filePath": "reception_270",
+		"neighbors": [
+			{
+				"id": "rec0",
+				"angle": 0
+			},
+			{
+				"id": "rec2",
+				"angle": 180
+			},
+			{
+				"id": "stair1",
+				"angle": 135
+			},
+			{
+				"id": "rec1",
+				"angle": 90
+			}
+		],
+		"items": [
+
+		]
+	},
+	{
+		"id": "stair1",
+		"name": "stairway_90",
+		"filePath": "stairway_90",
+		"neighbors": [
+			{
+				"id": "stair0",
+				"angle": 0
+			},
+			{
+				"id": "stair2",
+				"angle": 90
+			},
+			{
+				"id": "rec1",
+				"angle": 45
+			},
+			{
+				"id": "stair3",
+				"angle": 270
+			}
+		],
+		"items": [
+			{
+				"id": "orange2",
+				"name": "orange",
+				"filePath": "orange",
+				"positionX": 87.11111111111111,
+				"positionY": 34.888888888888886
+			}
+		]
+	},
+	{
+		"id": "rec2",
+		"name": "reception_180",
+		"filePath": "reception_180",
+		"neighbors": [
+			{
+				"id": "rec0",
+				"angle": 0
+			},
+			{
+				"id": "rec1",
+				"angle": 90
+			},
+			{
+				"id": "stair1",
+				"angle": 45
+			},
+			{
+				"id": "rec3",
+				"angle": 270
+			}
+		],
+		"items": [
+			{
+				"id": "apple2",
+				"name": "apple",
+				"filePath": "apple",
+				"positionX": 87.11111111111111,
+				"positionY": 34.888888888888886
+			}
+		]
+	},
+	{
+		"id": "stair0",
+		"name": "stairway_0",
+		"filePath": "stairway_0",
+		"neighbors": [
+			{
+				"id": "stair1",
+				"angle": 0
+			},
+			{
+				"id": "rec1",
+				"angle": 135
+			},
+			{
+				"id": "stair2",
+				"angle": 90
+			},
+			{
+				"id": "stair3",
+				"angle": 270
+			}
+		],
+		"items": [
+			{
+				"id": "apple5",
+				"name": "apple",
+				"filePath": "apple",
+				"positionX": 87.11111111111111,
+				"positionY": 34.888888888888886
+			}
+		]
+	},
+	{
+		"id": "stair3",
+		"name": "stairway_270",
+		"filePath": "stairway_270",
+		"neighbors": [
+			{
+				"id": "stair0",
+				"angle": 0
+			},
+			{
+				"id": "rec1",
+				"angle": 135
+			},
+			{
+				"id": "stair1",
+				"angle": 90
+			},
+			{
+				"id": "stair2",
+				"angle": 270
+			}
+		],
+		"items": [
+			{
+				"id": "apple4",
+				"name": "apple",
+				"filePath": "apple",
+				"positionX": 87.11111111111111,
+				"positionY": 34.888888888888886
+			}
+		]
+	},
+	{
+		"id": "stair2",
+		"name": "stairway_180",
+		"filePath": "stairway_180",
+		"neighbors": [
+			{
+				"id": "stair0",
+				"angle": 0
+			},
+			{
+				"id": "stair1",
+				"angle": 90
+			},
+			{
+				"id": "rec1",
+				"angle": 45
+			},
+			{
+				"id": "stair3",
+				"angle": 270
+			}
+		],
+		"items": [
+			{
+				"id": "orange1",
+				"name": "orange",
+				"filePath": "orange",
+				"positionX": 87.11111111111111,
+				"positionY": 34.888888888888886
 			}
 		]
 	}
