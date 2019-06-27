@@ -1,20 +1,20 @@
 [
 	{
-		"id": "rec0",
-		"name": "reception_0",
-		"filePath": "reception_0",
+		"id": "rec2",
+		"name": "reception_180",
+		"filePath": "reception_180",
 		"neighbors": [
 			{
-				"id": "rec2",
-				"angle": 180
-			},
-			{
-				"id": "stair1",
-				"angle": 135
+				"id": "rec0",
+				"angle": 0
 			},
 			{
 				"id": "rec1",
 				"angle": 90
+			},
+			{
+				"id": "stair1",
+				"angle": 45
 			},
 			{
 				"id": "rec3",
@@ -23,18 +23,47 @@
 		],
 		"items": [
 			{
-				"id": "apple0",
+				"id": "apple2",
 				"name": "apple",
 				"filePath": "apple",
-				"positionX": 200.0,
-				"positionY": 200.0
+				"positionX": 87.11111111111111,
+				"positionY": 34.888888888888886
+			}
+		]
+	},
+	{
+		"id": "stair1",
+		"name": "stairway_90",
+		"filePath": "stairway_90",
+		"neighbors": [
+			{
+				"id": "stair0",
+				"angle": 0
 			},
 			{
-				"id": "lemon0",
-				"name": "lemon",
-				"filePath": "lemon",
-				"positionX": 437.0,
-				"positionY": 140.0
+				"id": "stair2",
+				"angle": 90
+			},
+			{
+				"id": "hall0",
+				"angle": 300
+			},
+			{
+				"id": "rec1",
+				"angle": 45
+			},
+			{
+				"id": "stair3",
+				"angle": 270
+			}
+		],
+		"items": [
+			{
+				"id": "orange2",
+				"name": "orange",
+				"filePath": "orange",
+				"positionX": 87.11111111111111,
+				"positionY": 34.888888888888886
 			}
 		]
 	},
@@ -97,53 +126,21 @@
 		]
 	},
 	{
-		"id": "stair1",
-		"name": "stairway_90",
-		"filePath": "stairway_90",
+		"id": "rec0",
+		"name": "reception_0",
+		"filePath": "reception_0",
 		"neighbors": [
 			{
-				"id": "stair0",
-				"angle": 0
-			},
-			{
-				"id": "stair2",
-				"angle": 90
-			},
-			{
-				"id": "rec1",
-				"angle": 45
-			},
-			{
-				"id": "stair3",
-				"angle": 270
-			}
-		],
-		"items": [
-			{
-				"id": "orange2",
-				"name": "orange",
-				"filePath": "orange",
-				"positionX": 87.11111111111111,
-				"positionY": 34.888888888888886
-			}
-		]
-	},
-	{
-		"id": "rec2",
-		"name": "reception_180",
-		"filePath": "reception_180",
-		"neighbors": [
-			{
-				"id": "rec0",
-				"angle": 0
-			},
-			{
-				"id": "rec1",
-				"angle": 90
+				"id": "rec2",
+				"angle": 180
 			},
 			{
 				"id": "stair1",
-				"angle": 45
+				"angle": 135
+			},
+			{
+				"id": "rec1",
+				"angle": 90
 			},
 			{
 				"id": "rec3",
@@ -152,11 +149,18 @@
 		],
 		"items": [
 			{
-				"id": "apple2",
+				"id": "apple0",
 				"name": "apple",
 				"filePath": "apple",
-				"positionX": 87.11111111111111,
-				"positionY": 34.888888888888886
+				"positionX": 200.0,
+				"positionY": 200.0
+			},
+			{
+				"id": "lemon0",
+				"name": "lemon",
+				"filePath": "lemon",
+				"positionX": 437.0,
+				"positionY": 140.0
 			}
 		]
 	},
@@ -178,6 +182,10 @@
 				"angle": 90
 			},
 			{
+				"id": "hall0",
+				"angle": 300
+			},
+			{
 				"id": "stair3",
 				"angle": 270
 			}
@@ -185,6 +193,74 @@
 		"items": [
 			{
 				"id": "apple5",
+				"name": "apple",
+				"filePath": "apple",
+				"positionX": 87.11111111111111,
+				"positionY": 34.888888888888886
+			}
+		]
+	},
+	{
+		"id": "stair2",
+		"name": "stairway_180",
+		"filePath": "stairway_180",
+		"neighbors": [
+			{
+				"id": "stair0",
+				"angle": 0
+			},
+			{
+				"id": "stair1",
+				"angle": 90
+			},
+			{
+				"id": "hall0",
+				"angle": 300
+			},
+			{
+				"id": "rec1",
+				"angle": 45
+			},
+			{
+				"id": "stair3",
+				"angle": 270
+			}
+		],
+		"items": [
+			{
+				"id": "orange1",
+				"name": "orange",
+				"filePath": "orange",
+				"positionX": 87.11111111111111,
+				"positionY": 34.888888888888886
+			}
+		]
+	},
+	{
+		"id": "hall0",
+		"name": "hall_0",
+		"filePath": "hall_0",
+		"neighbors": [
+			{
+				"id": "hall1",
+				"angle": 0
+			},
+			{
+				"id": "stair0",
+				"angle": 135
+			},
+			{
+				"id": "hall2",
+				"angle": 90
+			},
+			{
+				"id": "hall3",
+				"angle": 270
+			}
+		],
+		"items": [
+			{
+				"id": "apple6",
 				"name": "apple",
 				"filePath": "apple",
 				"positionX": 87.11111111111111,
@@ -210,6 +286,10 @@
 				"angle": 90
 			},
 			{
+				"id": "hall0",
+				"angle": 300
+			},
+			{
 				"id": "stair2",
 				"angle": 270
 			}
@@ -225,35 +305,93 @@
 		]
 	},
 	{
-		"id": "stair2",
-		"name": "stairway_180",
-		"filePath": "stairway_180",
+		"id": "hall1",
+		"name": "hall_90",
+		"filePath": "hall_90",
 		"neighbors": [
 			{
-				"id": "stair0",
+				"id": "hall0",
 				"angle": 0
 			},
 			{
-				"id": "stair1",
+				"id": "stair0",
+				"angle": 135
+			},
+			{
+				"id": "hall2",
 				"angle": 90
 			},
 			{
-				"id": "rec1",
-				"angle": 45
-			},
-			{
-				"id": "stair3",
+				"id": "hall3",
 				"angle": 270
 			}
 		],
 		"items": [
 			{
-				"id": "orange1",
+				"id": "apple7",
+				"name": "apple",
+				"filePath": "apple",
+				"positionX": 87.11111111111111,
+				"positionY": 34.888888888888886
+			}
+		]
+	},
+	{
+		"id": "hall2",
+		"name": "hall_180",
+		"filePath": "hall_180",
+		"neighbors": [
+			{
+				"id": "hall0",
+				"angle": 0
+			},
+			{
+				"id": "hall1",
+				"angle": 90
+			},
+			{
+				"id": "stair0",
+				"angle": 45
+			},
+			{
+				"id": "hall3",
+				"angle": 270
+			}
+		],
+		"items": [
+			{
+				"id": "orange3",
 				"name": "orange",
 				"filePath": "orange",
 				"positionX": 87.11111111111111,
 				"positionY": 34.888888888888886
 			}
+		]
+	},
+	{
+		"id": "hall3",
+		"name": "hall_270",
+		"filePath": "hall_270",
+		"neighbors": [
+			{
+				"id": "hall0",
+				"angle": 0
+			},
+			{
+				"id": "hall1",
+				"angle": 90
+			},
+			{
+				"id": "stair0",
+				"angle": 45
+			},
+			{
+				"id": "hall2",
+				"angle": 270
+			}
+		],
+		"items": [
+
 		]
 	}
 ]
